@@ -1,5 +1,6 @@
 # Custom
 package-lock.json
+.next
 
 # Windows thumbnail cache files
 Thumbs.db
