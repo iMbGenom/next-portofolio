@@ -3,11 +3,41 @@ import React, { Component } from 'react'
 import BaseLayout from '../components/layouts/BaseLayout'
 
 class Index extends Component {
+
+    constructor() {
+        super()
+
+        this.state = {
+            title: 'I am index page'
+        }
+        console.log('constructor')
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount')
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate')
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
+    }
+
+    updateTitle() {
+        this.setState({
+            title: 'I am updated index page with function'
+        })
+    }
+
     render() {
+        console.log('render')
         return (
             /** USING JS */
             <BaseLayout>
                 <h1>I am Index Page from Class Component</h1>
+
                 {/* USING JSX */}
                 {/* // React.createElement(
                 //     "h1",
@@ -18,6 +48,12 @@ class Index extends Component {
                 {/* <Header title={'I am a header component'}>
                     <h1> I am header subtitle </h1>
                 </Header> */}
+                <h2> {this.state.title} </h2>
+
+                {/* add event handle onclick */}
+                {/* <button onClick={ () => {this.setState({title: 'I am updated index page'})}}> Change Title </button> */}
+                {/* using function */}
+                <button onClick={ () => this.updateTitle()}> Change Title </button>
             </BaseLayout>
         )
     }
