@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from '../components/shared/Header'
 
 class Index extends Component {
     render() {
@@ -12,11 +13,10 @@ class Index extends Component {
                 //     { className: "title" },
                 //     "I am Index Page from Class Component Created By React.createElement"
                 // ) */}
-                <a href="/"> Homepage </a>
-                <a href="/about"> About </a>
-                <a href="/portofolios"> Portofolio </a>
-                <a href="/blogs"> Blog </a>
-                <a href="/cv"> CV </a>
+                {/* props */}
+                <Header title={'I am a header component'}>
+                    <h1> I am header subtitle </h1>
+                </Header>
             </div>
         )
     }
