@@ -14,6 +14,7 @@ class Index extends SUperComponent {
             title: 'I am index page'
         }
         console.log('constructor')
+        // this.updateTitle = this.updateTitle.bind(this) // callback and arrow function 2nd options
     }
 
     componentDidMount() {
@@ -28,16 +29,26 @@ class Index extends SUperComponent {
         console.log('componentWillUnmount')
     }
 
+    // callback and arrow function 1st options
     updateTitle() {
-        debugger
+        // debugger
+        // console.log('I am update title')
+        // callback and arrow function 1st options
         this.setState({
             title: 'I am updated index page with function'
         })
     }
 
+    // callback and arrow function 3rd options
+    // updateTitle = () => {
+    //     this.setState({
+    //         title: 'I am updated index page with function'
+    //     })
+    // }
+
     render() {
         // console.log('render')
-        debugger
+        // debugger
         const { title } = this.state // destructurizing
         // const title = this.state.title // same like above
 
@@ -61,6 +72,9 @@ class Index extends SUperComponent {
                 {/* add event handle onclick */}
                 {/* <button onClick={ () => {this.setState({title: 'I am updated index page'})}}> Change Title </button> */}
                 {/* using function */}
+                {/* callback and arrow function 2nd & 3rd options */}
+                {/* <button onClick={this.updateTitle}> Change Title </button> */}
+                {/* callback and arrow function 1st options */}
                 <button onClick={ () => this.updateTitle()}> Change Title </button>
             </BaseLayout>
         )
