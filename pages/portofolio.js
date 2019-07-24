@@ -4,14 +4,11 @@ import { withRouter } from 'next/router'
 
 class Portofolio extends Component {
 
-    constructor(props) {
-        super()
-    }
-
     render() {
         return (
             <BaseLayout>
-                <h1>I am Portofolio Page with param: {this.props.router.query.title}</h1>
+                <h1>I am Portofolio Page with param:</h1>
+                <h2>{this.props.router.query.id}</h2>
             </BaseLayout>
         )
     }

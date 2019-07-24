@@ -19,24 +19,25 @@ class Portofolios extends Component {
     renderArticle(articles) {
         return articles.data.map((item, i) => {
             return (
-                <h2 key={i}>
+                <li key={i}>
                     {/* {i}. {item.Title} */}
                     {/* interpolate using backqual */}
-                    <Link href={`/portofolio?title=${item.Title}`}>
+                    <Link as={`/portofolio/${item._id}`} href={`/portofolio?id=${item._id}`}>
                         <a style={{'fontSize': '20px'}}> {item.Title} </a>
                     </Link>
-                </h2>
+                </li>
             )
         })
     }
 
     render() {
         const { articles } = this.props
-
         return (
             <BaseLayout>
                 <h1> I am Portofolios Page </h1>
-                { this.renderArticle(articles) }
+                <ul>
+                    { this.renderArticle(articles) }
+                </ul>
             </BaseLayout>
         )
     }
