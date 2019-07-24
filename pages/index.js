@@ -29,13 +29,18 @@ class Index extends SUperComponent {
     }
 
     updateTitle() {
+        debugger
         this.setState({
             title: 'I am updated index page with function'
         })
     }
 
     render() {
-        console.log('render')
+        // console.log('render')
+        debugger
+        const { title } = this.state // destructurizing
+        // const title = this.state.title // same like above
+
         return (
             /** USING JS */
             <BaseLayout>
