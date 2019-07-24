@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 // import Header from '../components/shared/Header'
 import BaseLayout from '../components/layouts/BaseLayout'
+import SUperComponent from '../components/SuperComponent'
 
-class Index extends Component {
+class Index extends SUperComponent {
 
-    constructor() {
-        super()
+    constructor(props) {
+        // debugger // dpt mengambil function alertName (this.alertName) pada SuperComponent, sdngkn this.someVariable undefined
+        super(props)
+        // debugger // dpt mengambil smua nya di SuperComponent yang setelah super
 
         this.state = {
             title: 'I am index page'
