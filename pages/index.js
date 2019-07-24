@@ -2,8 +2,31 @@ import React, { Component } from 'react'
 // import Header from '../components/shared/Header'
 import BaseLayout from '../components/layouts/BaseLayout'
 import SUperComponent from '../components/SuperComponent'
+import axios from 'axios'
+
+class Human {
+    talk() {
+        console.log('I am talking')
+    }
+
+    static walk() {
+        console.log('I am walking')
+    }
+}
+
+const human = new Human()
 
 class Index extends SUperComponent {
+
+    static async getInitialProps() {
+        const getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
+        console.log(getArticle.data)
+        console.log('I am getInitialProps') // 1st output in client and server
+        return {
+            initialData: [1, 2, 3, 4],
+            articles: getArticle.data
+        }
+    }
 
     constructor(props) {
         // debugger // dpt mengambil function alertName (this.alertName) pada SuperComponent, sdngkn this.someVariable undefined
@@ -13,12 +36,14 @@ class Index extends SUperComponent {
         this.state = {
             title: 'I am index page'
         }
-        console.log('constructor')
+        console.log('constructor') // 2nd output in client and server
         // this.updateTitle = this.updateTitle.bind(this) // callback and arrow function 2nd options
     }
 
     componentDidMount() {
         console.log('componentDidMount')
+        human.talk() // call function
+        Human.walk() // call static function
     }
 
     componentDidUpdate() {
@@ -46,11 +71,22 @@ class Index extends SUperComponent {
     //     })
     // }
 
+    renderArticle(articles) {
+        return articles.data.map((item, i) => {
+            return (
+                <h2 key={i}>{i}. {item.Title}</h2>
+            )
+        })
+    }
+
     render() {
         // console.log('render')
         // debugger
         const { title } = this.state // destructurizing
         // const title = this.state.title // same like above
+        // const initialData = this.props.initialData
+        const { initialData, articles } = this.props
+        console.log(articles)
 
         return (
             /** USING JS */
@@ -67,7 +103,8 @@ class Index extends SUperComponent {
                 {/* <Header title={'I am a header component'}>
                     <h1> I am header subtitle </h1>
                 </Header> */}
-                <h2> {this.state.title} </h2>
+                <h2> {title} </h2>
+                { this.renderArticle(articles) }
 
                 {/* add event handle onclick */}
                 {/* <button onClick={ () => {this.setState({title: 'I am updated index page'})}}> Change Title </button> */}
