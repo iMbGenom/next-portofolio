@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Link from 'next/link'
+// import Link from 'next/link'
+import { Link } from '../routes'
 import BaseLayout from '../components/layouts/BaseLayout'
 import axios from 'axios'
 
@@ -22,7 +23,8 @@ class Portofolios extends Component {
                 <li key={i}>
                     {/* {i}. {item.Title} */}
                     {/* interpolate using backqual */}
-                    <Link as={`/portofolio/${item._id}`} href={`/portofolio?id=${item._id}`}>
+                    <Link route={`/portofolio/${item._id}`}>
+                    {/* <Link as={`/portofolio/${item._id}`} href={`/portofolio?id=${item._id}`}> */}
                         <a style={{'fontSize': '20px'}}> {item.Title} </a>
                     </Link>
                 </li>
