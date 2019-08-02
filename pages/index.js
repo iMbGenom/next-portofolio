@@ -4,7 +4,6 @@ import BaseLayout from '../components/layouts/BaseLayout'
 import SUperComponent from '../components/SuperComponent'
 import axios from 'axios'
 import { Button, Container } from 'reactstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Human {
     talk() {
