@@ -4,6 +4,7 @@ import BaseLayout from '../components/layouts/BaseLayout'
 import SUperComponent from '../components/SuperComponent'
 import axios from 'axios'
 import { Button, Container, Row, Col } from 'reactstrap'
+import Typed from 'react-typed'
 
 class Human {
     talk() {
@@ -39,6 +40,8 @@ class Index extends SUperComponent {
         }
         console.log('constructor') // 2nd output in client and server
         // this.updateTitle = this.updateTitle.bind(this) // callback and arrow function 2nd options
+
+        this.roles = ['Developer', 'Tech Enthusiast', 'Team Player', 'Result Oriented']
     }
 
     componentDidMount() {
@@ -123,6 +126,22 @@ class Index extends SUperComponent {
                             Get informed, collaborate and discover projects I was working on through the years!
                             </h1>
                         </div>
+                        <Typed
+                            loop
+                            typeSpeed={70}
+                            backSpeed={70}
+                            strings={this.roles}
+                            // strings={["Testing", "Some more testing", "Bla bla bla"]}
+                            // smartBackspace
+                            // shuffle={false}
+                            backDelay={1000}
+                            // fadeOut={false}
+                            // fadeOutDelay={100}
+                            loopCount={0}
+                            showCursor
+                            className="self-typed"
+                            cursorChar="|"
+                        />
                         <div className="hero-welcome-bio">
                             <h1>
                             Let's take a look on my work.
