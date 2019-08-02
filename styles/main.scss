@@ -1,13 +1,22 @@
 @import './shared/fonts'; // import _fonts.scss
 
+// PAGES
+@import './index';
+
 html, body {
     font-family: 'Montserrat', 'Helvetica'; // you can use !important
 }
 
-.customClassFromFile {
-    color: blue;
-}
+// .customClassFromFile {
+//     color: blue;
+// }
 
-.fromPage {
-    font-size: 50px;
-}
+// .fromPage {
+//     font-size: 50px;
+// }
+
+// html, body {
+//     height:100%;
+//     width:100%;
+//     font-family: 'Montserrat', 'Helvetica';
+//   }

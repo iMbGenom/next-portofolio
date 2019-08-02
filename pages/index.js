@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import BaseLayout from '../components/layouts/BaseLayout'
 import SUperComponent from '../components/SuperComponent'
 import axios from 'axios'
-import { Button, Container } from 'reactstrap'
+import { Button, Container, Row, Col } from 'reactstrap'
 
 class Human {
     talk() {
@@ -90,35 +90,81 @@ class Index extends SUperComponent {
         console.log(articles)
 
         return (
-            /** USING JS */
-            <BaseLayout>
-                <Container>
-                    <Button color="danger">Danger!</Button>
-                </Container>
-                <h1>I am Index Page from Class Component</h1>
+            <BaseLayout className="cover">
+                <div className="main-section">
+                    <div className="background-image">
+                    <img src="/static/images/background-index.png" />
+                    </div>
 
-                {/* USING JSX */}
-                {/* // React.createElement(
-                //     "h1",
-                //     { className: "title" },
-                //     "I am Index Page from Class Component Created By React.createElement"
-                // ) */}
-                {/* props */}
-                {/* <Header title={'I am a header component'}>
-                    <h1> I am header subtitle </h1>
-                </Header> */}
-                <h2> {title} </h2>
-                { this.renderArticle(articles) }
-
-                {/* add event handle onclick */}
-                {/* <button onClick={ () => {this.setState({title: 'I am updated index page'})}}> Change Title </button> */}
-                {/* using function */}
-                {/* callback and arrow function 2nd & 3rd options */}
-                {/* <button onClick={this.updateTitle}> Change Title </button> */}
-                {/* callback and arrow function 1st options */}
-                {/* <button onClick={ () => this.updateTitle()}> Change Title </button> */}
+                    <Container>
+                    <Row>
+                        <Col md="6">
+                        <div className="hero-section">
+                            <div className={`flipper`}>
+                            <div className="back">
+                                <div className="hero-section-content">
+                                <h2> Full Stack Web Developer </h2>
+                                <div className="hero-section-content-intro">
+                                    Have a look at my portfolio and job history.
+                                </div>
+                                </div>
+                                <img className="image" src="/static/images/section-1.png"/>
+                                <div className="shadow-custom">
+                                <div className="shadow-inner"> </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </Col>
+                        <Col md="6" className="hero-welcome-wrapper">
+                        <div className="hero-welcome-text">
+                            <h1>
+                            Welcome to the portfolio website of Filip Jerga.
+                            Get informed, collaborate and discover projects I was working on through the years!
+                            </h1>
+                        </div>
+                        <div className="hero-welcome-bio">
+                            <h1>
+                            Let's take a look on my work.
+                            </h1>
+                        </div>
+                        </Col>
+                    </Row>
+                    </Container>
+                </div>
             </BaseLayout>
         )
+
+        // return (
+        //     /** USING JS */
+        //     <BaseLayout>
+        //         <Container>
+        //             <Button color="danger">Danger!</Button>
+        //         </Container>
+        //         <h1>I am Index Page from Class Component</h1>
+
+        //         {/* USING JSX */}
+        //         {/* // React.createElement(
+        //         //     "h1",
+        //         //     { className: "title" },
+        //         //     "I am Index Page from Class Component Created By React.createElement"
+        //         // ) */}
+        //         {/* props */}
+        //         {/* <Header title={'I am a header component'}>
+        //             <h1> I am header subtitle </h1>
+        //         </Header> */}
+        //         <h2> {title} </h2>
+        //         { this.renderArticle(articles) }
+
+        //         {/* add event handle onclick */}
+        //         {/* <button onClick={ () => {this.setState({title: 'I am updated index page'})}}> Change Title </button> */}
+        //         {/* using function */}
+        //         {/* callback and arrow function 2nd & 3rd options */}
+        //         {/* <button onClick={this.updateTitle}> Change Title </button> */}
+        //         {/* callback and arrow function 1st options */}
+        //         {/* <button onClick={ () => this.updateTitle()}> Change Title </button> */}
+        //     </BaseLayout>
+        // )
     }
 }
   
