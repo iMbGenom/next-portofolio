@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import BaseLayout from '../components/layouts/BaseLayout'
 import SUperComponent from '../components/SuperComponent'
 import axios from 'axios'
+import { Button, Container } from 'reactstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Human {
     talk() {
@@ -91,6 +93,9 @@ class Index extends SUperComponent {
         return (
             /** USING JS */
             <BaseLayout>
+                <Container>
+                    <Button color="danger">Danger!</Button>
+                </Container>
                 <h1>I am Index Page from Class Component</h1>
 
                 {/* USING JSX */}
@@ -112,7 +117,7 @@ class Index extends SUperComponent {
                 {/* callback and arrow function 2nd & 3rd options */}
                 {/* <button onClick={this.updateTitle}> Change Title </button> */}
                 {/* callback and arrow function 1st options */}
-                <button onClick={ () => this.updateTitle()}> Change Title </button>
+                {/* <button onClick={ () => this.updateTitle()}> Change Title </button> */}
             </BaseLayout>
         )
     }
