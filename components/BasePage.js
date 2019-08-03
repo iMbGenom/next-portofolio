@@ -14,9 +14,9 @@ const BasePage = (props) => {
     )
 }
 
-// BasePage.defaultProps = {
-//     className: ''
-// }
+BasePage.defaultProps = {
+    className: ''
+}
 
 BasePage.propTypes = {
     className: PropTypes.any.isRequired

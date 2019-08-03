@@ -69,6 +69,22 @@ const BsNavLink = (props) => {
   )
 }
 
+const Login = () => {
+  return (
+    <span className="nav-link port-navbar-link clickable">
+      Login
+    </span>
+  )
+}
+
+const Logout = () => {
+  return (
+    <span className="nav-link port-navbar-link clickable">
+      Logout
+    </span>
+  )
+}
+
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -110,9 +126,12 @@ export default class Example extends React.Component {
                 <BsNavLink route="/cv" title="CV" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <Login/>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              <NavItem className="port-navbar-item">
+                <Logout />
+              </NavItem>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options
                 </DropdownToggle>
@@ -128,7 +147,7 @@ export default class Example extends React.Component {
                     Reset
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Navbar>
