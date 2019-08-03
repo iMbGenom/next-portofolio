@@ -37,8 +37,8 @@ class Portofolios extends Component {
         const { articles } = this.props
         return (
             <BaseLayout>
-                <BasePage>
-                    <h1> I am Portofolios Page </h1>
+                <BasePage title="Portofolios">
+                    {/* <h1> I am Portofolios Page </h1> */}
                     <ul>
                         { this.renderArticle(articles) }
                     </ul>

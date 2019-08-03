@@ -7,8 +7,8 @@ class About extends Component {
     render() {
         return (
             <BaseLayout>
-                <BasePage className="about-page">
-                    <h1>I am About Page from Class Component</h1>
+                <BasePage className="about-page" title="I am About Page">
+                    {/* <h1>I am About Page from Class Component</h1> */}
                 </BasePage>
             </BaseLayout>
         )
