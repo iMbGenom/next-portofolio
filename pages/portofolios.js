@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 // import Link from 'next/link'
 import { Link } from '../routes'
 import BaseLayout from '../components/layouts/BaseLayout'
 import axios from 'axios'
 import BasePage from '../components/BasePage'
+import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle } from 'reactstrap'
 
 class Portofolios extends Component {
 
@@ -19,16 +20,31 @@ class Portofolios extends Component {
     }
 
     renderArticle(articles) {
-        return articles.data.map((item, i) => {
+        return articles.data.map((item, index) => {
             return (
-                <li key={i}>
-                    {/* {i}. {item.Title} */}
-                    {/* interpolate using backqual */}
-                    <Link route={`/portofolio/${item._id}`}>
-                    {/* <Link as={`/portofolio/${item._id}`} href={`/portofolio?id=${item._id}`}> */}
-                        <a style={{'fontSize': '20px'}}> {item.Title} </a>
-                    </Link>
-                </li>
+                // <li key={index}>
+                //     {/* {index}. {item.Title} */}
+                //     {/* interpolate using backqual */}
+                //     <Link route={`/portofolio/${item._id}`}>
+                //     {/* <Link as={`/portofolio/${item._id}`} href={`/portofolio?id=${item._id}`}> */}
+                //         <a style={{'fontSize': '20px'}}> {item.Title} </a>
+                //     </Link>
+                // </li>
+                <Col md="4" key={index}>
+                    <Fragment key={index}>
+                        <span>
+                        <Card className="portfolio-card">
+                            <CardHeader className="portfolio-card-header">Some Position {index}</CardHeader>
+                            <CardBody>
+                            <p className="portfolio-card-city"> Some Location {index} </p>
+                            <CardTitle className="portfolio-card-title">Some Company {index}</CardTitle>
+                            <CardText className="portfolio-card-text">Some Description {index}</CardText>
+                            <div className="readMore"> </div>
+                            </CardBody>
+                        </Card>
+                        </span>
+                    </Fragment>
+                </Col>
             )
         })
     }
@@ -37,11 +53,14 @@ class Portofolios extends Component {
         const { articles } = this.props
         return (
             <BaseLayout>
-                <BasePage title="Portofolios">
+                <BasePage className="portfolio-page" title="Portofolios">
                     {/* <h1> I am Portofolios Page </h1> */}
-                    <ul>
+                    {/* <ul>
                         { this.renderArticle(articles) }
-                    </ul>
+                    </ul> */}
+                    <Row>
+                        { this.renderArticle(articles) }
+                    </Row>
                 </BasePage>
             </BaseLayout>
         )
