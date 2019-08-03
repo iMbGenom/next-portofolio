@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Link } from '../routes'
 import BaseLayout from '../components/layouts/BaseLayout'
 import axios from 'axios'
+import BasePage from '../components/BasePage'
 
 class Portofolios extends Component {
 
@@ -36,10 +37,12 @@ class Portofolios extends Component {
         const { articles } = this.props
         return (
             <BaseLayout>
-                <h1> I am Portofolios Page </h1>
-                <ul>
-                    { this.renderArticle(articles) }
-                </ul>
+                <BasePage>
+                    <h1> I am Portofolios Page </h1>
+                    <ul>
+                        { this.renderArticle(articles) }
+                    </ul>
+                </BasePage>
             </BaseLayout>
         )
     }
