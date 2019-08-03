@@ -34,11 +34,11 @@ class Portofolios extends Component {
                     <Fragment key={index}>
                         <span>
                         <Card className="portfolio-card">
-                            <CardHeader className="portfolio-card-header">Some Position {index}</CardHeader>
+                            <CardHeader className="portfolio-card-header"><small>author: </small>{item.CreatedBy}</CardHeader>
                             <CardBody>
-                            <p className="portfolio-card-city"> Some Location {index} </p>
-                            <CardTitle className="portfolio-card-title">Some Company {index}</CardTitle>
-                            <CardText className="portfolio-card-text">Some Description {index}</CardText>
+                            <p className="portfolio-card-city">{item.Type}</p>
+                            <CardTitle className="portfolio-card-title">{item.Title}</CardTitle>
+                            <CardText className="portfolio-card-text">{item.Description}</CardText>
                             <div className="readMore"> </div>
                             </CardBody>
                         </Card>
