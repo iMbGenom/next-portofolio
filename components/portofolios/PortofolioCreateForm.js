@@ -1,27 +1,49 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+
+const validateInputs = (validate) => {
+    let errors = {}
+
+    // if (!values.email) {
+    //     errors.email = 'Required'
+    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+    //     errors.email = 'Invalid email address'
+    // }
+
+    return errors
+}
+
+const INITIAL_VALUES = {
+    Type: '',
+    CategoryId: '',
+    Title: '',
+    SubTitle: '',
+    Body: '',
+    Caption: '',
+    Description: '',
+    CreatedBy: '',
+    CreatedAt: ''
+    //   Type: 'article',
+    //   CategoryId: '1',
+    //   Title: 'My Software Engineering Path',
+    //   SubTitle: '',
+    //   Body: '<p>Can We Treat Acne and Prevent Acne Scar.</p><br/><p>Update on Stretch Marks</p><br/>',
+    //   Caption: 'Software Engineering',
+    //   Description: 'Topic Software Engineering',
+    //   CreatedBy: 'radiliadi'
+}
 
 // const PortofolioCreateForm = (props) => ( // onclick
 const PortofolioCreateForm = () => (
   <div>
-    <h1>Any place in your app!</h1>
+    {/* <h1>Any place in your app!</h1> */}
     {/* auto execute */}
     {/* <button onClick={props.onClick('Just some ordinary string')}> CLICK ME!!! </button> */}
     {/* then shoudl be like below */}
     {/* <button onClick={() => props.onClick('Just some ordinary string')}> CLICK ME!!! </button> */}
     <Formik
-      initialValues={{ email: '', password: '' }}
-      validate={values => {
-        let errors = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        return errors;
-      }}
+      initialValues={INITIAL_VALUES}
+      validate={validateInputs}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -31,13 +53,55 @@ const PortofolioCreateForm = () => (
     >
       {({ isSubmitting }) => (
         <Form>
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="div" />
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="div" />
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+            <div>
+                <label>Type</label>
+                <Field type="text" name="Type" />
+                <ErrorMessage name="Type" component="div" />
+            </div>
+            <div>
+                <label>CategoryId</label>
+                <Field type="text" name="CategoryId" />
+                <ErrorMessage name="CategoryId" component="div" />
+            </div>
+            <div>
+                <label>Title</label>
+                <Field type="text" name="Title" />
+                <ErrorMessage name="Title" component="div" />
+            </div>
+            <div>
+                <label>SubTitle</label>
+                <Field type="text" name="SubTitle" />
+                <ErrorMessage name="SubTitle" component="div" />
+            </div>
+            <div>
+                <label>Body</label>
+                <Field type="textarea" name="Body" component="textarea" />
+                <ErrorMessage name="Body" component="div" />
+            </div>
+            <div>
+                <label>Caption</label>
+                <Field type="text" name="Caption" />
+                <ErrorMessage name="Caption" component="div" />
+            </div>
+            <div>
+                <label>Description</label>
+                <Field type="text" name="Description" />
+                <ErrorMessage name="Description" component="div" />
+            </div>
+            <div>
+                <label>CreatedBy</label>
+                <Field type="text" name="CreatedBy" />
+                <ErrorMessage name="CreatedBy" component="div" />
+            </div>
+            <div>
+                <label>CreatedAt</label>
+                <Field type="text" name="CreatedAt" />
+                <ErrorMessage name="CreatedAt" component="div" />
+            </div>
+            
+            <button type="submit" disabled={isSubmitting}>
+                Submit
+            </button>
         </Form>
       )}
     </Formik>
