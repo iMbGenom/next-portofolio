@@ -10,6 +10,7 @@ class PortofolioNew extends Component {
                 <BasePage className="portofolio-create-page" title="Create New Portofolio">
                     {/* <h1>I am PortofolioNew Page from Class Component</h1> */}
                     <PortofolioCreateForm />
+                    {/* <PortofolioCreateForm onClick={(someVariable) => { console.log(someVariable) }} /> */}
                 </BasePage>
             </BaseLayout>
         )
