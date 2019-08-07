@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Button, FormGroup, Label } from 'reactstrap'
 
 const validateInputs = (validate) => {
     let errors = {}
@@ -53,55 +54,55 @@ const PortofolioCreateForm = () => (
     >
       {({ isSubmitting }) => (
         <Form>
-            <div>
-                <label>Type</label>
-                <Field type="text" name="Type" />
+            <FormGroup>
+                <Label>Type</Label>
+                <Field className="form-control" type="text" name="Type" />
                 <ErrorMessage name="Type" component="div" />
-            </div>
-            <div>
-                <label>CategoryId</label>
-                <Field type="text" name="CategoryId" />
+            </FormGroup>
+            <FormGroup>
+                <Label>CategoryId</Label>
+                <Field className="form-control" type="text" name="CategoryId" />
                 <ErrorMessage name="CategoryId" component="div" />
-            </div>
-            <div>
-                <label>Title</label>
-                <Field type="text" name="Title" />
+            </FormGroup>
+            <FormGroup>
+                <Label>Title</Label>
+                <Field className="form-control" type="text" name="Title" />
                 <ErrorMessage name="Title" component="div" />
-            </div>
-            <div>
-                <label>SubTitle</label>
-                <Field type="text" name="SubTitle" />
+            </FormGroup>
+            <FormGroup>
+                <Label>SubTitle</Label>
+                <Field className="form-control" type="text" name="SubTitle" />
                 <ErrorMessage name="SubTitle" component="div" />
-            </div>
-            <div>
-                <label>Body</label>
-                <Field type="textarea" name="Body" component="textarea" />
+            </FormGroup>
+            <FormGroup>
+                <Label>Body</Label>
+                <Field className="form-control" type="textarea" name="Body" component="textarea" />
                 <ErrorMessage name="Body" component="div" />
-            </div>
-            <div>
-                <label>Caption</label>
-                <Field type="text" name="Caption" />
+            </FormGroup>
+            <FormGroup>
+                <Label>Caption</Label>
+                <Field className="form-control" type="text" name="Caption" />
                 <ErrorMessage name="Caption" component="div" />
-            </div>
-            <div>
-                <label>Description</label>
-                <Field type="text" name="Description" />
+            </FormGroup>
+            <FormGroup>
+                <Label>Description</Label>
+                <Field className="form-control" type="text" name="Description" />
                 <ErrorMessage name="Description" component="div" />
-            </div>
-            <div>
-                <label>CreatedBy</label>
-                <Field type="text" name="CreatedBy" />
+            </FormGroup>
+            <FormGroup>
+                <Label>CreatedBy</Label>
+                <Field className="form-control" type="text" name="CreatedBy" />
                 <ErrorMessage name="CreatedBy" component="div" />
-            </div>
-            <div>
-                <label>CreatedAt</label>
-                <Field type="text" name="CreatedAt" />
+            </FormGroup>
+            <FormGroup>
+                <Label>CreatedAt</Label>
+                <Field className="form-control" type="text" name="CreatedAt" />
                 <ErrorMessage name="CreatedAt" component="div" />
-            </div>
+            </FormGroup>
             
-            <button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting}>
                 Submit
-            </button>
+            </Button>
         </Form>
       )}
     </Formik>
@@ -154,15 +155,15 @@ export default PortofolioCreateForm
 //     render() {
 //         return (
 //             <form onSubmit={this.handleSubmit}>
-//                 <label>
+//                 <Label>
 //                     Name:
 //                     <input name="title" type="text" value={this.state.value} onChange={this.handleChange} />
-//                 </label>
-//                 <label>
+//                 </Label>
+//                 <Label>
 //                     Description:
 //                     <textarea name="description" value={this.state.description} onChange={this.handleChange} />
-//                 </label>
-//                 <label>
+//                 </Label>
+//                 <Label>
 //                     Pick your favorite Programming Language:
 //                     <select name="language" value={this.state.language} onChange={this.handleChange}>
 //                         <option value="javascript">Javascript</option>
@@ -170,7 +171,7 @@ export default PortofolioCreateForm
 //                         <option value="c++">C++</option>
 //                         <option value="c#">C#</option>
 //                     </select>
-//                 </label>
+//                 </Label>
 //                 <input type="submit" value="Submit" />
 //             </form>
 //         )
