@@ -1,6 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button, FormGroup, Label } from 'reactstrap'
+import PortofolioInput from '../form/PortofolioInput'
 
 const validateInputs = (validate) => {
     let errors = {}
@@ -54,51 +55,60 @@ const PortofolioCreateForm = () => (
     >
       {({ isSubmitting }) => (
         <Form>
-            <FormGroup>
-                <Label>Type</Label>
-                <Field className="form-control" type="text" name="Type" />
-                <ErrorMessage name="Type" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>CategoryId</Label>
-                <Field className="form-control" type="text" name="CategoryId" />
-                <ErrorMessage name="CategoryId" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>Title</Label>
-                <Field className="form-control" type="text" name="Title" />
-                <ErrorMessage name="Title" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>SubTitle</Label>
-                <Field className="form-control" type="text" name="SubTitle" />
-                <ErrorMessage name="SubTitle" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>Body</Label>
-                <Field className="form-control" type="textarea" name="Body" component="textarea" />
-                <ErrorMessage name="Body" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>Caption</Label>
-                <Field className="form-control" type="text" name="Caption" />
-                <ErrorMessage name="Caption" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>Description</Label>
-                <Field className="form-control" type="text" name="Description" />
-                <ErrorMessage name="Description" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>CreatedBy</Label>
-                <Field className="form-control" type="text" name="CreatedBy" />
-                <ErrorMessage name="CreatedBy" component="div" />
-            </FormGroup>
-            <FormGroup>
-                <Label>CreatedAt</Label>
-                <Field className="form-control" type="text" name="CreatedAt" />
-                <ErrorMessage name="CreatedAt" component="div" />
-            </FormGroup>
+            <Field 
+                type="text"
+                name="Type"
+                label="Type"
+                component={PortofolioInput} 
+            />
+            <Field
+                type="text"
+                name="CategoryId"
+                label="CategoryId"
+                component={PortofolioInput}
+            />
+            <Field
+                type="text"
+                name="Title"
+                label="Title"
+                component={PortofolioInput}
+            />
+            <Field
+                type="text"
+                name="SubTitle"
+                label="SubTitle"
+                component={PortofolioInput}
+            />
+            <Field
+                type="textarea"
+                name="Body"
+                label="Body"
+                component={PortofolioInput}
+            />
+            <Field
+                type="text"
+                name="Caption"
+                label="Caption"
+                component={PortofolioInput}
+            />
+            <Field
+                type="text"
+                name="Description"
+                label="Description"
+                component={PortofolioInput}
+            />
+            <Field
+                type="text"
+                name="CreatedBy"
+                label="CreatedBy"
+                component={PortofolioInput}
+            />
+            <Field
+                type="text"
+                name="CreatedAt"
+                label="CreatedAt"
+                component={PortofolioInput}
+            />
             
             <Button type="submit" disabled={isSubmitting}>
                 Submit
