@@ -3,9 +3,35 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button, FormGroup, Label } from 'reactstrap'
 import PortofolioInput from '../form/PortofolioInput'
 
-const validateInputs = (validate) => {
+const validateInputs = (values) => {
     let errors = {}
+    // debugger
 
+    /** REQUIRED ALL FIELD */
+    /** Different Object.keys dan Object.entries, kalo entries dapet smuanya (key n value) */
+    const entries = Object.entries(values)
+    entries.forEach(([key, value]) => { // dapet key n value sesuai callback
+    // entries.forEach((object) => { // dapet key n value di dlm object
+        console.log(key)
+        if (!values[key]) {
+            errors[key] = `${key} is required.`
+        }
+    })
+    // const keyArray = Object.keys(values)
+    // keyArray.forEach((key) => {
+    //     console.log(key)
+    //     if (!values[key]) {
+    //         errors[key] = `${key} is required.`
+    //     }
+    // })
+
+    // if (!values.Type) {
+    //     errors.Type = 'Type is required'
+    // }
+
+    // if (!values.CategoryId) {
+    //     errors.CategoryId = 'CategoryId is required'
+    // }
     // if (!values.email) {
     //     errors.email = 'Required'
     // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
