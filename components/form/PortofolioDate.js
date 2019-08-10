@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
+import { FormGroup, Label } from 'reactstrap'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -20,11 +21,23 @@ class PortofolioDate extends Component {
   }
 
   render() {
+    const { label } = this.props
+
     return (
-        <DatePicker
-            selected={this.state.dateValue}
-            onChange={this.handleChange}
-        />
+        <FormGroup>
+            <Label>{label}</Label>
+            <div className='input-group'>
+                <DatePicker
+                    selected={this.state.dateValue}
+                    onChange={this.handleChange}
+                    peekNextMonth
+                    showMonthDropdown
+                    showYearDropdown
+                    maxDate={new Date()}
+                    dropdownMode="select"
+                />
+            </div>
+        </FormGroup>
     )
   }
 }
