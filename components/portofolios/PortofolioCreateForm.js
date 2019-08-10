@@ -42,11 +42,11 @@ const validateInputs = (values) => {
     /** HANDLE DATE PICKER */
     const CreatedAt = values.CreatedAt
     const UpdatedAt = values.UpdatedAt
-    // console.log('CreatedAt', CreatedAt)
-    // console.log('UpdatedAt', UpdatedAt)
+    console.log('CreatedAt', CreatedAt)
+    console.log('UpdatedAt', UpdatedAt)
 
     // if (CreatedAt && UpdatedAt && UpdatedAt.isBefore(CreatedAt)) {
-    if (CreatedAt && UpdatedAt && UpdatedAt > CreatedAt) {
+    if (CreatedAt && UpdatedAt && UpdatedAt < CreatedAt) {
         errors.UpdatedAt = 'Updated At cannot be before Created At'
     }
 
@@ -150,6 +150,7 @@ const PortofolioCreateForm = () => (
             <Field
                 name="UpdatedAt"
                 label="UpdatedAt"
+                canBeDisabled={true}
                 component={PortofolioDate}
             />
             
