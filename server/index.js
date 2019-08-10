@@ -1,6 +1,6 @@
 const express = require('express')
 const next = require('next')
-const routes = require('./routes')
+const routes = require('../routes')
 const favicon = require('serve-favicon')
 const path = require('path')
 
@@ -11,7 +11,7 @@ const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
     const server = express()
-    server.use(favicon(path.join(__dirname, 'static/images', 'favicon.ico')))
+    server.use(favicon(path.join(__dirname, '../static/images', 'favicon.ico')))
 
     // server.get('/portofolio/:id', (req, res) => {
     //     console.log('------PORTOFOLIO-----')
