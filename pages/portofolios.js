@@ -9,7 +9,12 @@ import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle } from 'react
 class Portofolios extends Component {
 
     static async getInitialProps() {
-        const getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
+        let getArticle = []
+        try {
+            getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
+        } catch (error) {
+            console.log('server error')
+        }
         return {
             articles: getArticle.data
         }

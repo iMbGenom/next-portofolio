@@ -21,9 +21,14 @@ const human = new Human()
 class Index extends SUperComponent {
 
     static async getInitialProps() {
-        const getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
-        console.log(getArticle.data)
+        let getArticle = []
         console.log('I am getInitialProps') // 1st output in client and server
+        try {
+            getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
+            console.log(getArticle.data)
+        } catch (error) {
+            console.log('server error')
+        }
         return {
             initialData: [1, 2, 3, 4],
             articles: getArticle.data

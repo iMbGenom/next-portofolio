@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button, FormGroup, Label } from 'reactstrap'
 import PortofolioInput from '../form/PortofolioInput'
+import PortofolioDate from '../form/PortofolioDate'
 
 const validateInputs = (values) => {
     let errors = {}
@@ -130,10 +131,14 @@ const PortofolioCreateForm = () => (
                 component={PortofolioInput}
             />
             <Field
-                type="text"
                 name="CreatedAt"
                 label="CreatedAt"
-                component={PortofolioInput}
+                component={PortofolioDate}
+            />
+            <Field
+                name="UpdatedAt"
+                label="UpdatedAt"
+                component={PortofolioDate}
             />
             
             <Button type="submit" disabled={isSubmitting}>
