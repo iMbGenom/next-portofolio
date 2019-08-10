@@ -1,6 +1,6 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Button, FormGroup, Label } from 'reactstrap'
+import { Formik, Form, Field } from 'formik'
+import { Button } from 'reactstrap'
 import PortofolioInput from '../form/PortofolioInput'
 import PortofolioDate from '../form/PortofolioDate'
 
@@ -42,8 +42,8 @@ const validateInputs = (values) => {
     /** HANDLE DATE PICKER */
     const CreatedAt = values.CreatedAt
     const UpdatedAt = values.UpdatedAt
-    console.log('CreatedAt', CreatedAt)
-    console.log('UpdatedAt', UpdatedAt)
+    // console.log('CreatedAt', CreatedAt)
+    // console.log('UpdatedAt', UpdatedAt)
 
     // if (CreatedAt && UpdatedAt && UpdatedAt.isBefore(CreatedAt)) {
     if (CreatedAt && UpdatedAt && UpdatedAt < CreatedAt) {
@@ -75,7 +75,7 @@ const INITIAL_VALUES = {
 }
 
 // const PortofolioCreateForm = (props) => ( // onclick
-const PortofolioCreateForm = () => (
+const PortofolioCreateForm = (props) => (
   <div>
     {/* <h1>Any place in your app!</h1> */}
     {/* auto execute */}
@@ -85,12 +85,13 @@ const PortofolioCreateForm = () => (
     <Formik
       initialValues={INITIAL_VALUES}
       validate={validateInputs}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={props.onSubmit}
+    //   onSubmit={(values, { setSubmitting }) => {
+    //     setTimeout(() => {
+    //       alert(JSON.stringify(values, null, 2))
+    //       setSubmitting(false)
+    //     }, 400)
+    //   }}
     >
       {({ isSubmitting }) => (
         <Form>
@@ -154,7 +155,7 @@ const PortofolioCreateForm = () => (
                 component={PortofolioDate}
             />
             
-            <Button type="submit" disabled={isSubmitting}>
+            <Button color="success" size="md" type="submit" disabled={isSubmitting}>
                 Submit
             </Button>
         </Form>

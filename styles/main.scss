@@ -28,7 +28,7 @@ html, body {
   }
 
 .base-page {
-    padding-top: 150px;
+    padding: 150px 0 100px 0; // if 150px 0 : top+bottom and right+left .. if 150px 0 100px 0 : top right bottom left
     color: black;
     background-color: #ecedee;
     min-height: 100vh;

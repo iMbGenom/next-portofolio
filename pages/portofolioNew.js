@@ -5,6 +5,17 @@ import PortofolioCreateForm from '../components/portofolios/PortofolioCreateForm
 import { Row, Col } from 'reactstrap'
 
 class PortofolioNew extends Component {
+
+    constructor(props) {
+        super()
+
+        this.savePortofolio = this.savePortofolio.bind(this)
+    }
+
+    savePortofolio(portofolioData) {
+        alert(JSON.stringify(portofolioData, null, 2))
+    }
+
     render() {
         return (
             <BaseLayout>
@@ -12,7 +23,7 @@ class PortofolioNew extends Component {
                     <Row>
                         <Col md="6">
                             {/* <h1>I am PortofolioNew Page from Class Component</h1> */}
-                            <PortofolioCreateForm />
+                            <PortofolioCreateForm onSubmit={this.savePortofolio} />
                             {/* <PortofolioCreateForm onClick={(someVariable) => { console.log(someVariable) }} /> */}
                         </Col>
                     </Row>
