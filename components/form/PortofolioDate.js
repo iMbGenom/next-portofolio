@@ -27,7 +27,9 @@ class PortofolioDate extends Component {
   }
 
   render() {
-    const { label } = this.props
+    const { label, field, form: { touched, errors } } = this.props
+    // get desctructurizing at above code for touched and errors
+    // const { touched, errors } = this.props.form
 
     return (
         <FormGroup>
@@ -43,6 +45,7 @@ class PortofolioDate extends Component {
                     dropdownMode="select"
                 />
             </div>
+            {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
         </FormGroup>
     )
   }

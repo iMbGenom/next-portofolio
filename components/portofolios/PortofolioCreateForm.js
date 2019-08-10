@@ -13,7 +13,7 @@ const validateInputs = (values) => {
     const entries = Object.entries(values)
     entries.forEach(([key, value]) => { // dapet key n value sesuai callback
     // entries.forEach((object) => { // dapet key n value di dlm object
-        console.log(key)
+        // console.log(key)
         if (!values[key] && (values[key] === 'CreatedAt' || values[key] === 'UpdatedAt')) {
             errors[key] = `${key} is required.`
         }
@@ -38,6 +38,17 @@ const validateInputs = (values) => {
     // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     //     errors.email = 'Invalid email address'
     // }
+
+    /** HANDLE DATE PICKER */
+    const CreatedAt = values.CreatedAt
+    const UpdatedAt = values.UpdatedAt
+    // console.log('CreatedAt', CreatedAt)
+    // console.log('UpdatedAt', UpdatedAt)
+
+    // if (CreatedAt && UpdatedAt && UpdatedAt.isBefore(CreatedAt)) {
+    if (CreatedAt && UpdatedAt && UpdatedAt > CreatedAt) {
+        errors.UpdatedAt = 'Updated At cannot be before Created At'
+    }
 
     return errors
 }
