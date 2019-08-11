@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import { Button } from 'reactstrap'
 import PortofolioInput from '../form/PortofolioInput'
 import PortofolioDate from '../form/PortofolioDate'
+import AlertNotif from '../shared/AlertNotif'
 
 const validateInputs = (values) => {
     let errors = {}
@@ -93,8 +94,15 @@ const PortofolioCreateForm = (props) => (
     //     }, 400)
     //   }}
     >
+        {/* isSubmitting : true or false */}
       {({ isSubmitting }) => (
         <Form>
+            {
+                props.error &&
+                <AlertNotif>
+                    {props.error}
+                </AlertNotif>
+            }
             <Field 
                 type="text"
                 name="Type"
@@ -155,7 +163,8 @@ const PortofolioCreateForm = (props) => (
                 component={PortofolioDate}
             />
             
-            <Button color="success" size="md" type="submit" disabled={isSubmitting}>
+            <Button color="success" size="md" type="submit">
+            {/* <Button color="success" size="md" type="submit" disabled={isSubmitting}> */}
                 Submit
             </Button>
         </Form>

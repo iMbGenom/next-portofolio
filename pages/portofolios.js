@@ -2,21 +2,32 @@ import React, { Component, Fragment } from 'react'
 // import Link from 'next/link'
 import { Link } from '../routes'
 import BaseLayout from '../components/layouts/BaseLayout'
-import axios from 'axios'
 import BasePage from '../components/BasePage'
 import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle } from 'reactstrap'
+import { getContents } from '../actions'
 
 class Portofolios extends Component {
 
-    static async getInitialProps() {
-        let getArticle = []
+    static async getInitialProps({req}) {
+        // let getArticle = []
+        // try {
+        //     getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
+        // } catch (error) {
+        //     console.log('server error')
+        // }
+        // return {
+        //     articles: getArticle.data
+        // }
+        let contents = []
+
         try {
-            getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
+            contents = await getContents(req)
         } catch (error) {
-            console.log('server error')
+            console.log(error)
         }
+
         return {
-            articles: getArticle.data
+            contents
         }
     }
 
@@ -24,26 +35,26 @@ class Portofolios extends Component {
         super(props)
     }
 
-    renderArticle(articles) {
-        return articles.data.map((item, index) => {
+    renderContents(contents) {
+        return contents.data.map((content, index) => {
             return (
                 // <li key={index}>
-                //     {/* {index}. {item.Title} */}
+                //     {/* {index}. {content.Title} */}
                 //     {/* interpolate using backqual */}
-                //     <Link route={`/portofolio/${item._id}`}>
-                //     {/* <Link as={`/portofolio/${item._id}`} href={`/portofolio?id=${item._id}`}> */}
-                //         <a style={{'fontSize': '20px'}}> {item.Title} </a>
+                //     <Link route={`/portofolio/${content._id}`}>
+                //     {/* <Link as={`/portofolio/${content._id}`} href={`/portofolio?id=${content._id}`}> */}
+                //         <a style={{'fontSize': '20px'}}> {content.Title} </a>
                 //     </Link>
                 // </li>
                 <Col md="4" key={index}>
                     <Fragment key={index}>
                         <span>
                         <Card className="portfolio-card">
-                            <CardHeader className="portfolio-card-header"><small>author: </small>{item.CreatedBy}</CardHeader>
+                            <CardHeader className="portfolio-card-header"><small>author: </small>{content.CreatedBy}</CardHeader>
                             <CardBody>
-                            <p className="portfolio-card-city">{item.Type}</p>
-                            <CardTitle className="portfolio-card-title">{item.Title}</CardTitle>
-                            <CardText className="portfolio-card-text">{item.Description}</CardText>
+                            <p className="portfolio-card-city">{content.Type}</p>
+                            <CardTitle className="portfolio-card-title">{content.Title}</CardTitle>
+                            <CardText className="portfolio-card-text">{content.Description}</CardText>
                             <div className="readMore"> </div>
                             </CardBody>
                         </Card>
@@ -55,7 +66,7 @@ class Portofolios extends Component {
     }
 
     render() {
-        const { articles } = this.props
+        const { contents } = this.props
         return (
             <BaseLayout>
                 <BasePage className="portfolio-page" title="Portofolios">
@@ -64,7 +75,7 @@ class Portofolios extends Component {
                         { this.renderArticle(articles) }
                     </ul> */}
                     <Row>
-                        { this.renderArticle(articles) }
+                        { this.renderContents(contents) }
                     </Row>
                 </BasePage>
             </BaseLayout>
