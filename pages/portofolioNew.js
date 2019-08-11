@@ -4,6 +4,7 @@ import BasePage from '../components/BasePage'
 import PortofolioCreateForm from '../components/portofolios/PortofolioCreateForm'
 import { Row, Col } from 'reactstrap'
 import { createContent } from '../actions'
+import { Router } from '../routes'
 
 class PortofolioNew extends Component {
 
@@ -17,19 +18,21 @@ class PortofolioNew extends Component {
         this.savePortofolio = this.savePortofolio.bind(this)
     }
 
-    savePortofolio(portofolioData) {
+    savePortofolio(portofolioData, {setSubmitting}) {
         // alert(JSON.stringify(portofolioData, null, 2))
+        setSubmitting(true)
         createContent(portofolioData).then((content) => {
-            // console.log(content)
+            setSubmitting(false)
             this.setState({
                 error: undefined
             })
+            Router.pushRoute('/portofolios')
         }).catch((err) => {
+            setSubmitting(false)
+            const error = err.message || 'Server Error'
             this.setState({
-                error: err.message
-                // error: err.response.data.message
+                error: error
             })
-            // console.error(err)
         })
     }
 

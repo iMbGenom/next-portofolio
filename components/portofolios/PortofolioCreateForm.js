@@ -15,7 +15,8 @@ const validateInputs = (values) => {
     entries.forEach(([key, value]) => { // dapet key n value sesuai callback
     // entries.forEach((object) => { // dapet key n value di dlm object
         // console.log(key)
-        if (!values[key] && (values[key] === 'CreatedAt' || values[key] === 'UpdatedAt')) {
+        // if (!values[key] && (values[key] === 'CreatedAt' || values[key] === 'UpdatedAt')) {
+        if (!values[key] && key !== 'UpdatedAt') {
             errors[key] = `${key} is required.`
         }
     })
@@ -163,8 +164,8 @@ const PortofolioCreateForm = (props) => (
                 component={PortofolioDate}
             />
             
-            <Button color="success" size="md" type="submit">
-            {/* <Button color="success" size="md" type="submit" disabled={isSubmitting}> */}
+            {/* <Button color="success" size="md" type="submit"> */}
+            <Button color="success" size="md" type="submit" disabled={isSubmitting}>
                 Submit
             </Button>
         </Form>
