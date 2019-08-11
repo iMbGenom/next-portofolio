@@ -18,7 +18,12 @@ const rejectPromise = (responseError) => {
 }
 
 export const getContents = async(req) => {
-    return await axiosInstance.get('/content?CategoryId=1&Page=1')
+    return await axiosInstance.get('/content?Page=1')
+                .then(response => response.data)
+}
+
+export const getContentById = async(id) => {
+    return await axiosInstance.get(`/content?_id=${id}`)
                 .then(response => response.data)
 }
 

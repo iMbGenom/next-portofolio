@@ -2,6 +2,7 @@ const routes = require('next-routes')
 
 module.exports = routes()                           // ----   ----      -----
 .add('portofolio', '/portofolio/:id')
+.add('portofolioEdit', '/portofolio/:id/edit')
 // .add('about')                                       // about  about     /about
 // .add('blog', '/blog/:slug')                         // blog   blog      /blog/:slug
 // .add('user', '/user/:id', 'profile')                // user   profile   /user/:id
