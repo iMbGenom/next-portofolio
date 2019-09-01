@@ -6,13 +6,7 @@ const axiosInstance = axios.create({
 })
 
 const rejectPromise = (responseError) => {
-    let error = {}
-
-    if (responseError && responseError.response && responseError.response.data) {
-        error = responseError.response.data
-    } else {
-        error = responseError
-    }
+    const error = (responseError && responseError.response && responseError.response.data) ? responseError.response.data : error = responseError
 
     return Promise.reject(error)
 }
