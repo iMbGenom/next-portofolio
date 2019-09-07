@@ -74,4 +74,4 @@ class PortofolioDate extends Component {
   }
 }
 
-export default PortofolioDate 
+export default PortofolioDate

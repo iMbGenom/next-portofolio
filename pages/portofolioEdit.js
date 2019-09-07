@@ -8,7 +8,7 @@ import { Router } from '../routes'
 
 class PortofolioEdit extends Component {
 
-    static async getInitialProps({query}) {
+    static async getInitialProps({ query }) {
         let content = {}
         try {
             content = await getContentById(query.id)

@@ -8,7 +8,7 @@ import { getContents } from '../actions'
 
 class Portofolios extends Component {
 
-    static async getInitialProps({req}) {
+    static async getInitialProps({ req }) {
         // let getArticle = []
         // try {
         //     getArticle = await axios.get('http://localhost:3001/v/1/content?CategoryId=1&Page=1&Type=article')
@@ -26,9 +26,7 @@ class Portofolios extends Component {
             console.log(error)
         }
 
-        return {
-            contents
-        }
+        return { contents }
     }
 
     constructor(props) {

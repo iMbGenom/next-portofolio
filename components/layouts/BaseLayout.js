@@ -6,7 +6,7 @@ const BaseLayout = (props) => {
     const headerType = props.headerType || 'default'
 
     return (
-        <div className="layout-container" >
+        <div className="layout-container">
             {/* { headerType === 'index' && <Header className="port-nav-index" />} */}
             {/* { headerType === 'default' && <Header className="port-nav-default" />} */}
             <Header className={`port-nav-${headerType}`} />
