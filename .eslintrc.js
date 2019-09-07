@@ -21,5 +21,18 @@ module.exports = {
     'react'
   ],
   rules: {
+    "indent": ["error", 2],
+    "space-infix-ops": "off",
+    "prefer-promise-reject-errors": "off",
+    "space-after-function-name": "off",
+    "space-before-function-paren": "off",
+    "eol-last": "off",
+    "no-sequences": "off",
+    "no-unused-expressions": "off",
+    "semi": ["error", "never"],
+    "quotes": "off",
+    "quote-props": "off",
+    "mocha/no-mocha-arrows": "off",
+    "mocha/no-setup-in-describe": "off"
   }
 }
