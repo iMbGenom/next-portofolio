@@ -6,6 +6,19 @@ import { Row, Col } from 'reactstrap'
 import { createContent } from '../actions'
 import { Router } from '../routes'
 
+const INITIAL_VALUES = {
+    Type: '',
+    CategoryId: '',
+    Title: '',
+    SubTitle: '',
+    Body: '',
+    Caption: '',
+    Description: '',
+    CreatedBy: '',
+    CreatedAt: '',
+    UpdatedAt: ''
+}
+
 class PortofolioNew extends Component {
 
     constructor(props) {
@@ -44,7 +57,10 @@ class PortofolioNew extends Component {
                     <Row>
                         <Col md="6">
                             {/* <h1>I am PortofolioNew Page from Class Component</h1> */}
-                            <PortofolioCreateForm error={error} onSubmit={this.savePortofolio} />
+                            <PortofolioCreateForm
+                                initialValues={INITIAL_VALUES}
+                                error={error}
+                                onSubmit={this.savePortofolio} />
                             {/* <PortofolioCreateForm onClick={(someVariable) => { console.log(someVariable) }} /> */}
                         </Col>
                     </Row>

@@ -28,3 +28,10 @@ export const createContent = async (contentData) => {
     .catch(error => rejectPromise(error))
   return result
 }
+
+export const updateContent = async (contentData) => {
+  const result = await axiosInstance.put(`/content/${contentData._id}`, contentData)
+    .then(response => response.data)
+    .catch(error => rejectPromise(error))
+  return result
+}

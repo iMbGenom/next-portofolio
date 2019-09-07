@@ -16,7 +16,7 @@ const validateInputs = (values) => {
     // entries.forEach((object) => { // dapet key n value di dlm object
         // console.log(key)
         // if (!values[key] && (values[key] === 'CreatedAt' || values[key] === 'UpdatedAt')) {
-        if (!values[key] && key !== 'UpdatedAt') {
+        if (!values[key] && key !== 'UpdatedAt' && key !== 'UpdatedBy') {
             errors[key] = `${key} is required.`
         }
     })
@@ -51,21 +51,22 @@ const validateInputs = (values) => {
     if (CreatedAt && UpdatedAt && UpdatedAt < CreatedAt) {
         errors.UpdatedAt = 'Updated At cannot be before Created At'
     }
+    console.log(errors)
 
     return errors
 }
 
-const INITIAL_VALUES = {
-    Type: '',
-    CategoryId: '',
-    Title: '',
-    SubTitle: '',
-    Body: '',
-    Caption: '',
-    Description: '',
-    CreatedBy: '',
-    CreatedAt: '',
-    UpdatedAt: ''
+// const INITIAL_VALUES = {
+    // Type: '',
+    // CategoryId: '',
+    // Title: '',
+    // SubTitle: '',
+    // Body: '',
+    // Caption: '',
+    // Description: '',
+    // CreatedBy: '',
+    // CreatedAt: '',
+    // UpdatedAt: ''
     //   Type: 'article',
     //   CategoryId: '1',
     //   Title: 'My Software Engineering Path',
@@ -74,10 +75,10 @@ const INITIAL_VALUES = {
     //   Caption: 'Software Engineering',
     //   Description: 'Topic Software Engineering',
     //   CreatedBy: 'radiliadi'
-}
+// }
 
 // const PortofolioCreateForm = (props) => ( // onclick
-const PortofolioCreateForm = (props) => (
+const PortofolioCreateForm = ({ initialValues, onSubmit, error }) => (
   <div>
     {/* <h1>Any place in your app!</h1> */}
     {/* auto execute */}
@@ -85,9 +86,12 @@ const PortofolioCreateForm = (props) => (
     {/* then shoudl be like below */}
     {/* <button onClick={() => props.onClick('Just some ordinary string')}> CLICK ME!!! </button> */}
     <Formik
-      initialValues={INITIAL_VALUES}
+      initialValues={initialValues}
       validate={validateInputs}
-      onSubmit={props.onSubmit}
+      onSubmit={onSubmit}
+    //   initialValues={props.initialValues}
+    //   validate={validateInputs}
+    //   onSubmit={props.onSubmit}
     //   onSubmit={(values, { setSubmitting }) => {
     //     setTimeout(() => {
     //       alert(JSON.stringify(values, null, 2))
@@ -99,9 +103,9 @@ const PortofolioCreateForm = (props) => (
       {({ isSubmitting }) => (
         <Form>
             {
-                props.error &&
+                error &&
                 <AlertNotif>
-                    {props.error}
+                    {error}
                 </AlertNotif>
             }
             <Field 
@@ -155,12 +159,14 @@ const PortofolioCreateForm = (props) => (
             <Field
                 name="CreatedAt"
                 label="CreatedAt"
+                initialDate={initialValues.CreatedAt}
                 component={PortofolioDate}
             />
             <Field
                 name="UpdatedAt"
                 label="UpdatedAt"
                 canBeDisabled={true}
+                initialDate={initialValues.UpdatedAt}
                 component={PortofolioDate}
             />
             
