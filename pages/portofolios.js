@@ -7,7 +7,8 @@ import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle, Button } fro
 
 import { Router } from '../routes'
 
-import { getContents } from '../actions'
+import { getContents, deleteContent } from '../actions'
+import AlertNotif from '../components/shared/AlertNotif';
 
 class Portofolios extends Component {
 
@@ -36,6 +37,25 @@ class Portofolios extends Component {
         super(props)
     }
 
+    displayDeleteWarning(content) {
+        // window.confirm('Are you sure?')
+        const isConfirm = confirm('Are you sure?')
+
+        if (isConfirm) {
+            // delete here
+            this.delete(content)
+        }
+    }
+
+    delete(content) {
+        deleteContent(content)
+        .then(() => {
+            // decide what todo next
+            Router.pushRoute('/portofolios')
+        })
+        .catch(err => console.error(err))
+    }
+
     renderContents(contents) {
         return contents.data.map((content, index) => {
             return (
@@ -54,13 +74,13 @@ class Portofolios extends Component {
                             <CardHeader className="portfolio-card-header"><small>author: </small>{content.CreatedBy}</CardHeader>
                             <CardBody>
                             <p className="portfolio-card-city">{content.Type}</p>
-                            <CardTitle className="portfolio-card-title">{content.Title}</CardTitle>
+                            <CardTitle onClick={() => Router.pushRoute(`/portofolio/${content._id}`)} className="portfolio-card-title">{content.Title}</CardTitle>
                             <CardText className="portfolio-card-text">{content.Description}</CardText>
                             <div className="readMore">
                             {
                                 <Fragment>
-                                    <Button color="light">Update</Button> {' '}
-                                    <Button color="success">Delete</Button>
+                                    <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="light">Update</Button> {' '}
+                                    <Button onClick={() => alert('hehe')} color="success">Delete</Button>
                                 </Fragment>
                             }
                             </div>
@@ -68,7 +88,7 @@ class Portofolios extends Component {
                             {
                                 <Fragment>
                                     <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="secondary">Update</Button>
-                                    <Button color="info">Delete</Button>
+                                    <Button onClick={() => this.displayDeleteWarning(content)} color="info">Delete</Button>
                                 </Fragment>
                             }
                         </Card>

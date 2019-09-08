@@ -35,3 +35,10 @@ export const updateContent = async (contentData) => {
     .catch(error => rejectPromise(error))
   return result
 }
+
+export const deleteContent = async (contentData) => {
+  const result = await axiosInstance.delete(`/content/${contentData._id}`)
+    .then(response => response.data)
+    .catch(error => rejectPromise(error))
+  return result
+}
