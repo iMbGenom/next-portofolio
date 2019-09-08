@@ -34,13 +34,19 @@ class Portofolios extends Component {
         return { contents }
     }
 
+    navigateToEdit(content, e) {
+        e.stopPropagation()
+        Router.pushRoute(`/portofolio/${content._id}/edit`)
+    }
+
     constructor(props) {
         super(props)
     }
 
-    displayDeleteWarning(content) {
+    displayDeleteWarning(content, e) {
+        e.stopPropagation()
         // window.confirm('Are you sure?')
-        const isConfirm = confirm('Are you sure?')
+        const isConfirm = confirm(`Are you sure delete ${content.Title}?`)
 
         if (isConfirm) {
             // delete here
@@ -72,8 +78,14 @@ class Portofolios extends Component {
                     <PortofolioCard content={content}>
                         {
                         <Fragment>
-                            <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="light">Update</Button> {' '}
-                            <Button onClick={() => alert('hehe')} color="success">Delete</Button>
+                            <Button
+                                // onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)}
+                                onClick={(e) => this.navigateToEdit(content, e)}
+                                color="light"
+                            >
+                                Update
+                            </Button> {' '}
+                            <Button onClick={(e) => this.displayDeleteWarning(content, e)} color="success">Delete</Button>
                         </Fragment>
                         }
                     </PortofolioCard>

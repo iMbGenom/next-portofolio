@@ -12,6 +12,17 @@ class PortofolioCard extends Component {
     this.handleToggle = this.handleToggle.bind(this)
   }
 
+  displayDeleteWarning(content, e) {
+    e.stopPropagation()
+    // window.confirm('Are you sure?')
+    const isConfirm = confirm(`Are you sure delete ${content.Title}?`)
+
+    if (isConfirm) {
+        // delete here
+        this.delete(content)
+    }
+}
+
   handleToggle() {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
@@ -39,7 +50,7 @@ class PortofolioCard extends Component {
               {
                 <Fragment>
                     <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="secondary">Update</Button>
-                    <Button onClick={() => this.displayDeleteWarning(content)} color="info">Delete</Button>
+                    <Button onClick={(e) => this.displayDeleteWarning(content, e)} color="info">Delete</Button>
                 </Fragment>
               }
           </Card>
