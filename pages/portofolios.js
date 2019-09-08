@@ -3,7 +3,10 @@ import React, { Component, Fragment } from 'react'
 import { Link } from '../routes'
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
-import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle } from 'reactstrap'
+import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle, Button } from 'reactstrap'
+
+import { Router } from '../routes'
+
 import { getContents } from '../actions'
 
 class Portofolios extends Component {
@@ -53,8 +56,21 @@ class Portofolios extends Component {
                             <p className="portfolio-card-city">{content.Type}</p>
                             <CardTitle className="portfolio-card-title">{content.Title}</CardTitle>
                             <CardText className="portfolio-card-text">{content.Description}</CardText>
-                            <div className="readMore"> </div>
+                            <div className="readMore">
+                            {
+                                <Fragment>
+                                    <Button color="light">Update</Button> {' '}
+                                    <Button color="success">Delete</Button>
+                                </Fragment>
+                            }
+                            </div>
                             </CardBody>
+                            {
+                                <Fragment>
+                                    <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="secondary">Update</Button>
+                                    <Button color="info">Delete</Button>
+                                </Fragment>
+                            }
                         </Card>
                         </span>
                     </Fragment>
@@ -68,6 +84,13 @@ class Portofolios extends Component {
         return (
             <BaseLayout>
                 <BasePage className="portfolio-page" title="Portofolios">
+                    <Button
+                        onClick={() => Router.pushRoute('/portofolioNew')}
+                        className="create-btn"
+                        color="success"
+                    >
+                        Create
+                    </Button>
                     {/* <h1> I am Portofolios Page </h1> */}
                     {/* <ul>
                         { this.renderArticle(articles) }

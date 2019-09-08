@@ -16,7 +16,16 @@ const validateInputs = (values) => {
     // entries.forEach((object) => { // dapet key n value di dlm object
         // console.log(key)
         // if (!values[key] && (values[key] === 'CreatedAt' || values[key] === 'UpdatedAt')) {
-        if (!values[key] && key !== 'UpdatedAt' && key !== 'UpdatedBy') {
+        if (!values[key]
+            && key !== 'UpdatedAt'
+            && key !== 'UpdatedBy'
+            && key !== 'ImagePath'
+            && key !== 'ImageUrl'
+            && key !== 'Keyword'
+            && key !== 'VideoPath'
+            && key !== 'VideoUrl'
+            && key !== 'Slug'
+        ) {
             errors[key] = `${key} is required.`
         }
     })
