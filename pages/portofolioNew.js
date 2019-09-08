@@ -15,8 +15,8 @@ const INITIAL_VALUES = {
     Caption: '',
     Description: '',
     CreatedBy: '',
-    CreatedAt: '',
-    UpdatedAt: ''
+    CreatedAt: new Date(),
+    UpdatedAt: new Date()
 }
 
 class PortofolioNew extends Component {

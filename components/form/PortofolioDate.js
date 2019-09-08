@@ -13,10 +13,11 @@ class PortofolioDate extends Component {
     // const dateValue = props.initialDate ? new Date(props.initialDate * 1000) : new Date() // *1000 is convert epochUTC to date
     // console.log(props.initialDate)
     // console.log(dateValue)
+    const isHidden = props.initialDate ? false : true
 
     this.state = {
         dateValue: dateValue,
-        isHidden: false
+        isHidden: isHidden
     }
     this.handleChange = this.handleChange.bind(this)
   }
