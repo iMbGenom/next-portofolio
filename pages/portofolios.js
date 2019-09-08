@@ -4,6 +4,7 @@ import { Link } from '../routes'
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
 import { Col, Row, Card, CardHeader, CardBody, CardText, CardTitle, Button } from 'reactstrap'
+import PortofolioCard from '../components/portofolios/PortofolioCard'
 
 import { Router } from '../routes'
 
@@ -68,32 +69,14 @@ class Portofolios extends Component {
                 //     </Link>
                 // </li>
                 <Col md="4" key={index}>
-                    <Fragment key={index}>
-                        <span>
-                        <Card className="portfolio-card">
-                            <CardHeader className="portfolio-card-header"><small>author: </small>{content.CreatedBy}</CardHeader>
-                            <CardBody>
-                            <p className="portfolio-card-city">{content.Type}</p>
-                            <CardTitle onClick={() => Router.pushRoute(`/portofolio/${content._id}`)} className="portfolio-card-title">{content.Title}</CardTitle>
-                            <CardText className="portfolio-card-text">{content.Description}</CardText>
-                            <div className="readMore">
-                            {
-                                <Fragment>
-                                    <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="light">Update</Button> {' '}
-                                    <Button onClick={() => alert('hehe')} color="success">Delete</Button>
-                                </Fragment>
-                            }
-                            </div>
-                            </CardBody>
-                            {
-                                <Fragment>
-                                    <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="secondary">Update</Button>
-                                    <Button onClick={() => this.displayDeleteWarning(content)} color="info">Delete</Button>
-                                </Fragment>
-                            }
-                        </Card>
-                        </span>
-                    </Fragment>
+                    <PortofolioCard content={content}>
+                        {
+                        <Fragment>
+                            <Button onClick={() => Router.pushRoute(`/portofolio/${content._id}/edit`)} color="light">Update</Button> {' '}
+                            <Button onClick={() => alert('hehe')} color="success">Delete</Button>
+                        </Fragment>
+                        }
+                    </PortofolioCard>
                 </Col>
             )
         })
