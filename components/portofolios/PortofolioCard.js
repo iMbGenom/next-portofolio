@@ -4,16 +4,28 @@ import PortofolioCardDetail from './PortofolioCardDetail'
 
 class PortofolioCard extends Component {
   constructor(props) {
-    super()
+    super(props)
+    this.state = {
+      isOpen: false
+    }
+
+    this.handleToggle = this.handleToggle.bind(this)
+  }
+
+  handleToggle() {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }))
   }
 
   render() {
     const { content, children } = this.props
+    const { isOpen } = this.state
 
     return (
       // <Fragment key={index}>
-        <span>
-          <PortofolioCardDetail />
+        <span onClick={this.handleToggle}>
+          <PortofolioCardDetail toggle={this.handleToggle} content={content} isOpen={isOpen}/>
           <Card className="portfolio-card">
               <CardHeader onClick={() => Router.pushRoute(`/user/${content.CreatedBy}`)} className="portfolio-card-header"><small>@</small>{content.CreatedBy}</CardHeader>
               <CardBody>
