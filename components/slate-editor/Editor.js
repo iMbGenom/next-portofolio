@@ -24,10 +24,15 @@ class SlateEditor extends Component {
     componentDidMount() {
         const value = this.props.initialValue ? Value.fromJSON(initialValue) : Value.fromJSON(initialValue)
 
+        this.updateMenu()
         this.setState({
             isLoaded: true,
             value
         })
+    }
+
+    componentDidUpdate = () => {
+        this.updateMenu()
     }
   
     // On change, update the app's React state with the new editor value.
@@ -57,6 +62,9 @@ class SlateEditor extends Component {
 
         // Toggle the block type depending on `isCode`.
         editor.setBlocks(isCode ? 'paragraph' : 'code')
+
+        this.save()
+        next()
     }
 
     // Add a `renderBlock` method to render a `CodeNode` for code blocks.
@@ -69,6 +77,30 @@ class SlateEditor extends Component {
         default:
             return next()
         }
+    }
+
+    updateMenu = () => {
+        const menu = this.menu
+        if (!menu) return
+    
+        const { value } = this.state
+        const { fragment, selection } = value
+    
+        if (selection.isBlurred || selection.isCollapsed || fragment.text === '') {
+          menu.removeAttribute('style')
+          return
+        }
+    
+        const native = window.getSelection()
+        const range = native.getRangeAt(0)
+        const rect = range.getBoundingClientRect()
+        menu.style.opacity = 1
+        menu.style.top = `${rect.top + window.pageYOffset - menu.offsetHeight}px`
+    
+        menu.style.left = `${rect.left +
+          window.pageXOffset -
+          menu.offsetWidth / 2 +
+          rect.width / 2}px`
     }
 
     getTitle() {
@@ -90,7 +122,7 @@ class SlateEditor extends Component {
     save() {
         const { save, isLoading } = this.props
         const headingValues = this.getTitle()
-        const text = headingValues.text
+        const text = headingValues.Text
 
         !isLoading && save(text, headingValues)
     }

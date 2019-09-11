@@ -3,6 +3,7 @@ const routes = require('next-routes')
 module.exports = routes()
   .add('portofolio', '/portofolio/:id')
   .add('portofolioEdit', '/portofolio/:id/edit')
+  .add('blogEditor', '/blogs/new')
   .add('blogEditorUpdate', '/blogs/:id/edit')
 // .add('about')                                       // about  about     /about
 // .add('blog', '/blog/:slug')                         // blog   blog      /blog/:slug

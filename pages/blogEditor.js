@@ -4,6 +4,7 @@ import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
 import SlateEditor from '../components/slate-editor/Editor'
 import { fakeSave, createContent } from '../actions'
+import { Router } from '../routes'
 
 class BlogEditor extends Component {
     constructor(props) {
@@ -42,9 +43,10 @@ class BlogEditor extends Component {
         createContent(blog).then(data => {
             this.setState({ isSaving: false })
             console.log(data)
+            Router.pushRoute(`/blogs/${data.data._id}/edit`)
         }).catch((err) => {
             this.setState({ isSaving: false })
-            console.log(err)
+            // console.log(err)
         })
     }
 

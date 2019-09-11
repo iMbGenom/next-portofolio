@@ -3,7 +3,7 @@ import Header from '../components/shared/Header'
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
 import SlateEditor from '../components/slate-editor/Editor'
-import { getContentById } from '../actions'
+import { updateContent, getContentById } from '../actions'
 
 class BlogEditorUpdate extends Component {
     static async getInitialProps({ query }) {
@@ -23,6 +23,29 @@ class BlogEditorUpdate extends Component {
         super(props)
 
         this.state = { isSaving: false }
+
+        this.updateBlog = this.updateBlog.bind(this)
+    }
+
+    updateBlog(text, heading) {
+        const { blog } = this.props
+        const data = blog.data[0]
+        // const updatedBlog = {}
+        data.Title = heading.Title
+        data.SubTitle = heading.SubTitle
+        data.Body = text
+        data.UpdatedAt = new Date(data.UpdatedAt).getTime()
+
+        this.setState({ isSaving: true })
+        // console.log(data)
+        updateContent(data).then(data => {
+            this.setState({ isSaving: false })
+            console.log(data)
+            // Router.pushRoute(`/blogs/${data.data._id}/edit`)
+        }).catch((err) => {
+            this.setState({ isSaving: false })
+            // console.log(err)
+        })
     }
 
     render() {
@@ -34,7 +57,7 @@ class BlogEditorUpdate extends Component {
         return (
             <BaseLayout>
                 <BasePage className="blog-editor-page">
-                    <SlateEditor initialValue={Body} isLoading={isSaving} save={ console.log('here should be update') }/>
+                    <SlateEditor initialValue={Body} isLoading={isSaving} save={this.updateBlog}/>
                 </BasePage>
             </BaseLayout>
         )
