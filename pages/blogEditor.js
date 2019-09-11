@@ -8,7 +8,8 @@ class BlogEditor extends Component {
     render() {
         return (
             <BaseLayout>
-                <BasePage className="blog-editor-page" title="Write Your Story..">
+                <BasePage className="blog-editor-page">
+                {/* <BasePage className="blog-editor-page" title="Write Your Story.."> */}
                     {/* <h1>I am About Page from Class Component</h1> */}
                     <SlateEditor />
                 </BasePage>

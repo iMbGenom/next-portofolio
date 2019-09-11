@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Editor } from 'slate-react'
 import { Value } from 'slate'
+import ControlMenu from './ControlMenu'
 
 const initialValue = Value.fromJSON({
   document: {
@@ -66,7 +67,7 @@ class SlateEditor extends Component {
 
         // Determine whether any of the currently selected blocks are code blocks.
         const isCode = editor.value.blocks.some(block => block.type == 'code')
-        
+
         // Toggle the block type depending on `isCode`.
         editor.setBlocks(isCode ? 'paragraph' : 'code')
     }
@@ -88,6 +89,7 @@ class SlateEditor extends Component {
         const { isLoaded } = this.state
         return (
             <Fragment>
+                <ControlMenu />
                 {/* <pre><code>haha hihi</code></pre> */}
                 { isLoaded &&
                     <Editor
