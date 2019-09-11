@@ -3,39 +3,54 @@ import Header from '../components/shared/Header'
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
 import SlateEditor from '../components/slate-editor/Editor'
-import { fakeSave } from '../actions'
+import { fakeSave, createContent } from '../actions'
 
 class BlogEditor extends Component {
     constructor(props) {
         super()
 
-        this.state = {
-            isSaving: false
-        }
+        this.state = { isSaving: false }
 
         this.saveBlog = this.saveBlog.bind(this)
     }
 
-    saveBlog(heading) {
+    saveBlog(text, heading) {
         const blog = {}
+        blog.Type = 'Blog'
+        blog.Category = '2'
         blog.Title = heading.Title
         blog.SubTitle = heading.SubTitle
-        this.setState({
-            isSaving: true
-        })
-        fakeSave(heading).then(data => {
-            this.setState({
-                isSaving: false
-            })
+        blog.Body = text
+        blog.Caption = 'Blog'
+        blog.Description = 'Test Blog'
+        blog.CreatedBy = 'Monkey D. Luffy'
+        blog.UpdatedBy = 0,
+        blog.CreatedAt = new Date()
+
+        this.setState({ isSaving: true })
+
+        // fakeSave(heading).then(data => {
+        //     this.setState({
+        //         isSaving: false
+        //     })
+        //     console.log(data)
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
+
+        createContent(blog).then(data => {
+            this.setState({ isSaving: false })
             console.log(data)
-        })
-        .catch(err => {
+        }).catch((err) => {
+            this.setState({ isSaving: false })
             console.log(err)
         })
     }
 
     render() {
         const { isSaving } = this.state
+
         return (
             <BaseLayout>
                 <BasePage className="blog-editor-page">
