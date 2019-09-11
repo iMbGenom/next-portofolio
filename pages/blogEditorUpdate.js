@@ -12,10 +12,11 @@ class BlogEditorUpdate extends Component {
 
         try {
             blog = await getContentById(blogId)
-            return { blog }
         } catch (err) {
-            return { err }
+            console.log(err)
         }
+
+        return { blog }
     }
 
     constructor(props) {
@@ -27,12 +28,13 @@ class BlogEditorUpdate extends Component {
     render() {
         const { blog } = this.props
         const { isSaving } = this.state
-        console.log(blog)
+        const Body = blog.data[0].Body
+        // console.log(blog.data[0].Body)
 
         return (
             <BaseLayout>
                 <BasePage className="blog-editor-page">
-                    <SlateEditor isLoading={isSaving} save={ console.log('here should be update') }/>
+                    <SlateEditor initialValue={Body} isLoading={isSaving} save={ console.log('here should be update') }/>
                 </BasePage>
             </BaseLayout>
         )

@@ -1,24 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { Editor } from 'slate-react'
-import { Value } from 'slate'
+import { initialValue } from './initial-value'
 import ControlMenu from './ControlMenu'
-
-const initialValue = Value.fromJSON({
-  document: {
-    nodes: [
-      {
-        object: 'block',
-        type: 'paragraph',
-        nodes: [
-          {
-            object: 'text',
-            text: 'A line of text in a paragraph.',
-          },
-        ],
-      },
-    ],
-  },
-})
+import { Value } from 'slate'
 
 // Define a React component renderer for our code blocks.
 function CodeNode(props) {
@@ -33,13 +17,16 @@ function CodeNode(props) {
 class SlateEditor extends Component {
     // Set the initial value when the app is first constructed.
     state = {
-        value: initialValue,
+        value: Value.create(),
         isLoaded: false
     }
 
     componentDidMount() {
+        const value = this.props.initialValue ? Value.fromJSON(initialValue) : Value.fromJSON(initialValue)
+
         this.setState({
-            isLoaded: true
+            isLoaded: true,
+            value
         })
     }
   
