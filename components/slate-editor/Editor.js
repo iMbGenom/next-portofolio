@@ -19,6 +19,15 @@ const initialValue = Value.fromJSON({
   },
 })
 
+// Define a React component renderer for our code blocks.
+function CodeNode(props) {
+    return (
+      <pre {...props.attributes}>
+        <code>{props.children}</code>
+      </pre>
+    )
+  }
+
 // Define our app...
 class SlateEditor extends Component {
     // Set the initial value when the app is first constructed.
@@ -42,15 +51,36 @@ class SlateEditor extends Component {
 
     // Define a new handler which prints the key that was pressed.
     onKeyDown = (event, editor, next) => {
-        // Return with no changes if the keypress is not '&'
-        if (event.key !== '&') return next()
+        // // Return with no changes if the keypress is not '&'
+        // if (event.key !== '&') return next()
 
-        // Prevent the ampersand character from being inserted.
+        // // Prevent the ampersand character from being inserted.
+        // event.preventDefault()
+
+        // // Change the value by inserting 'and' at the cursor's position.
+        // editor.insertText('and')
+        // return true
+        if (event.key != '`' || !event.ctrlKey) return next()
+
         event.preventDefault()
 
-        // Change the value by inserting 'and' at the cursor's position.
-        editor.insertText('and')
-        return true
+        // Determine whether any of the currently selected blocks are code blocks.
+        const isCode = editor.value.blocks.some(block => block.type == 'code')
+        
+        // Toggle the block type depending on `isCode`.
+        editor.setBlocks(isCode ? 'paragraph' : 'code')
+    }
+
+    // Add a `renderBlock` method to render a `CodeNode` for code blocks.
+    renderNode = (props, editor, next) => {
+        switch (props.node.type) {
+        case 'code':
+            return <CodeNode {...props} />
+        case 'paragraph':
+            return <p {...props.attributes}>{props.children}</p>
+        default:
+            return next()
+        }
     }
   
     // Render the editor.
@@ -58,11 +88,13 @@ class SlateEditor extends Component {
         const { isLoaded } = this.state
         return (
             <Fragment>
+                {/* <pre><code>haha hihi</code></pre> */}
                 { isLoaded &&
                     <Editor
                         value={this.state.value}
                         onChange={this.onChange}
                         onKeyDown={this.onKeyDown}
+                        renderNode={this.renderNode}
                     />
                 }
             </Fragment>
