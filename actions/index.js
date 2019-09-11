@@ -42,3 +42,12 @@ export const deleteContent = async (contentData) => {
     .catch(error => rejectPromise(error))
   return result
 }
+
+export const fakeSave = async (contentData) => {
+  console.log(contentData)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('promise resolve fake save')
+    }, 1000)
+  })
+}

@@ -1,13 +1,13 @@
 import { Button } from 'reactstrap'
 
-const ControlMenu = () => {
+const ControlMenu = (props) => {
     return (
         <div className="control-menu">
             <h1 className="title"> Write Your Content </h1>
             <div className="status-box">
-                Saved
+                { props.isLoading ? 'Saving..' : 'Saved' }
             </div>
-            <Button color="success">Save</Button>
+            <Button onClick={props.save} color="success">Save</Button>
         </div>
     )
 

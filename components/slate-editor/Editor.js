@@ -83,16 +83,38 @@ class SlateEditor extends Component {
             return next()
         }
     }
+
+    getTitle() {
+        const { value } = this.state
+        const firstBlock = value.document.getBlocks().get(0)
+        const secondBlock = value.document.getBlocks().get(1)
+        const Title = firstBlock && firstBlock.text ? firstBlock.text : 'Untitled'
+        const SubTitle = secondBlock && secondBlock.text ? secondBlock.text : 'Unsubtitled'
+
+        return {
+            Title,
+            SubTitle
+        }
+    }
+
+    save() {
+        const { save } = this.props
+        const headingValues = this.getTitle()
+
+        save(headingValues)
+    }
   
     // Render the editor.
     render() {
         const { isLoaded } = this.state
+        const { isLoading } = this.props
         return (
             <Fragment>
-                <ControlMenu />
+                <ControlMenu isLoading={isLoading} save={() => this.save()}></ControlMenu>
                 {/* <pre><code>haha hihi</code></pre> */}
                 { isLoaded &&
                     <Editor
+                        {...this.props}
                         value={this.state.value}
                         onChange={this.onChange}
                         onKeyDown={this.onKeyDown}
