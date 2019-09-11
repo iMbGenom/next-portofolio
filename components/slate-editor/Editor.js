@@ -101,17 +101,17 @@ class SlateEditor extends Component {
     }
 
     save() {
-        const { save } = this.props
+        const { save, isLoading } = this.props
         const headingValues = this.getTitle()
         const text = headingValues.text
 
-        save(text, headingValues)
+        !isLoading && save(text, headingValues)
     }
   
     // Render the editor.
     render() {
-        const { isLoaded } = this.state
-        const { isLoading } = this.props
+        const { isLoaded } = this.state // formalitas karena ada error kalo ga pake ini
+        const { isLoading } = this.props // untuk button saving
         return (
             <Fragment>
                 <ControlMenu isLoading={isLoading} save={() => this.save()}></ControlMenu>
