@@ -27,6 +27,7 @@
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
     "formik": "^1.5.8",
+    "immutable": "^4.0.0-rc.12",
     "moment": "^2.24.0",
     "next": "^9.0.2",
     "next-routes": "^1.4.2",
@@ -36,7 +37,9 @@
     "react-dom": "^16.8.6",
     "react-typed": "^1.1.2",
     "reactstrap": "^8.0.1",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "slate": "^0.44.6",
+    "slate-react": "^0.21.12"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
