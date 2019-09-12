@@ -4,6 +4,7 @@ import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
 import SlateEditor from '../components/slate-editor/Editor'
 import { updateContent, getContentById } from '../actions'
+import { toast } from 'react-toastify'
 
 class BlogEditorUpdate extends Component {
     static async getInitialProps({ query }) {
@@ -31,18 +32,20 @@ class BlogEditorUpdate extends Component {
         const { blog } = this.props
         const data = blog.data[0]
         // const updatedBlog = {}
-        data.Title = heading.Title
-        data.SubTitle = heading.SubTitle
-        data.Body = text
+        // data.Title = heading.Title
+        // data.SubTitle = heading.SubTitle
+        // data.Body = text
         data.UpdatedAt = new Date(data.UpdatedAt).getTime()
 
         this.setState({ isSaving: true })
         // console.log(data)
         updateContent(data).then(data => {
+            toast.success('Successfully')
             this.setState({ isSaving: false })
             console.log(data)
             // Router.pushRoute(`/blogs/${data.data._id}/edit`)
         }).catch((err) => {
+            toast.error(err.message)
             this.setState({ isSaving: false })
             // console.log(err)
         })

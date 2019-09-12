@@ -1,9 +1,11 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import { ToastContainer } from 'react-toastify'
 
 // Stylings
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/main.scss' // our font css will override bootstrap in above line
+import 'react-toastify/dist/ReactToastify.css' // react-toastify
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
@@ -26,6 +28,7 @@ class MyApp extends App {
 
     return (
       <Container>
+        <ToastContainer />
         <Component {...pageProps} />
       </Container>
     )
