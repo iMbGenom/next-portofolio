@@ -44,6 +44,7 @@ class SlateEditor extends Component {
 
     // Define a new handler which prints the key that was pressed.
     onKeyDown = (event, editor, next) => {
+        const { isLoading } = this.props
         // // Return with no changes if the keypress is not '&'
         // if (event.key !== '&') return next()
 
@@ -53,17 +54,22 @@ class SlateEditor extends Component {
         // // Change the value by inserting 'and' at the cursor's position.
         // editor.insertText('and')
         // return true
-        if (event.key != '`' || !event.ctrlKey) return next()
+        // if (event.key != '`' || !event.ctrlKey) return next()
 
-        event.preventDefault()
+        // event.preventDefault()
 
         // Determine whether any of the currently selected blocks are code blocks.
-        const isCode = editor.value.blocks.some(block => block.type == 'code')
+        // const isCode = editor.value.blocks.some(block => block.type == 'code')
 
         // Toggle the block type depending on `isCode`.
-        editor.setBlocks(isCode ? 'paragraph' : 'code')
+        // editor.setBlocks(isCode ? 'paragraph' : 'code')
 
-        this.save()
+        if (!isLoading && event.which === 83 && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault()
+            this.save()
+            return
+        }
+
         next()
     }
 
