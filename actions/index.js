@@ -22,6 +22,12 @@ export const getContentById = async (id) => {
   return result
 }
 
+export const getContentByUser = async (CreatedBy) => {
+  const result = await axiosInstance.get(`/content?CreatedBy=${CreatedBy}`)
+    .then(response => response.data)
+  return result
+}
+
 export const createContent = async (contentData) => {
   const result = await axiosInstance.post('/content', contentData)
     .then(response => response.data)
