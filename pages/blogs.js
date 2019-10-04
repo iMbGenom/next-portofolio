@@ -119,7 +119,7 @@ class Blogs extends Component {
                     </Container>
                     </footer>
                 </BasePage>
-                </BaseLayout>
+            </BaseLayout>
 
         )
     }
