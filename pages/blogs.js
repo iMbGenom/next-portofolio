@@ -4,9 +4,45 @@ import BasePage from '../components/BasePage'
 import { Container, Row, Col } from 'reactstrap'
 import { Link } from '../routes'
 import moment from 'moment'
+import { getContents } from '../actions'
 
 class Blogs extends Component {
+    static async getInitialProps() {
+        let blogs = []
+
+        try {
+            blogs = await getContents()
+        } catch (error) {
+            console.log(error)
+        }
+
+        return { blogs }
+    }
+
+    renderBlogs = (blogs) => (
+        blogs.map((blog, index) => (
+            <div key={index} className="post-preview">
+                <Link route={`/blogs/${blog.Slug}`}>
+                <a>
+                    <h2 className="post-title">
+                    {blog.Title}
+                    </h2>
+                    <h3 className="post-subtitle">
+                    {blog.SubTitle}
+                    </h3>
+                </a>
+                </Link>
+                <p className="post-meta">Posted by
+                    <a href="#"> {blog.CreatedBy} </a> {moment(blog.CreatedAt).format('LLLL')}
+                </p>
+            </div>
+            )
+        )
+    )
+
     render() {
+        const { blogs } = this.props
+        // console.log(blogs)
         return (
             <BaseLayout headerType={'landing'} className="blog-listing-page">
                 <div className="masthead" style={{"backgroundImage": "url('/static/images/home-bg.jpg')"}}>
@@ -26,56 +62,7 @@ class Blogs extends Component {
                     <Row>
                     <Col md="10" lg="8" className="mx-auto">
                         {
-                        <React.Fragment>
-                        <div  className="post-preview">
-                            <Link route={`/blogs/blogId`}>
-                            <a>
-                                <h2 className="post-title">
-                                Very Nice Blog Post
-                                </h2>
-                                <h3 className="post-subtitle">
-                                How I Start Porgramming...
-                                </h3>
-                            </a>
-                            </Link>
-                            <p className="post-meta">Posted by
-                                <a href="#"> Filip Jerga </a> {moment().format('LLLL')}
-                            </p>
-                        </div>
-                        <hr></hr>
-                        <div  className="post-preview">
-                            <Link route={`/blogs/blogId`}>
-                            <a>
-                                <h2 className="post-title">
-                                Very Nice Blog Post
-                                </h2>
-                                <h3 className="post-subtitle">
-                                How I Start Porgramming...
-                                </h3>
-                            </a>
-                            </Link>
-                            <p className="post-meta">Posted by
-                                <a href="#"> Filip Jerga </a> {moment().format('LLLL')}
-                            </p>
-                        </div>
-                        <hr></hr>
-                        <div  className="post-preview">
-                            <Link route={`/blogs/blogId`}>
-                            <a>
-                                <h2 className="post-title">
-                                Very Nice Blog Post
-                                </h2>
-                                <h3 className="post-subtitle">
-                                How I Start Porgramming...
-                                </h3>
-                            </a>
-                            </Link>
-                            <p className="post-meta">Posted by
-                                <a href="#"> Filip Jerga </a> {moment().format('LLLL')}
-                            </p>
-                        </div>
-                        <hr></hr>
-                        </React.Fragment>
+                        this.renderBlogs(blogs.data)
                         }
                         <div className="clearfix">
                         <a className="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
