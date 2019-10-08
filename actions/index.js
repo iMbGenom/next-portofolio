@@ -28,6 +28,12 @@ export const getContentByUser = async (CreatedBy) => {
   return result
 }
 
+export const getContentBySlug = async (slug) => {
+  const result = await axiosInstance.get(`/content?Slug=${slug}`)
+    .then(response => response.data)
+  return result
+}
+
 export const createContent = async (contentData) => {
   const result = await axiosInstance.post('/content', contentData)
     .then(response => response.data)

@@ -22,7 +22,7 @@ class Blogs extends Component {
     renderBlogs = (blogs) => (
         blogs.map((blog, index) => (
             <div key={index} className="post-preview">
-                <Link route={`/blogs/${blog.Slug}`}>
+                <Link route={`/blog/${blog.Slug}`}>
                 <a>
                     <h2 className="post-title">
                     {blog.Title}
