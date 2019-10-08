@@ -6,6 +6,14 @@ import { Link } from '../routes'
 import moment from 'moment'
 import { getContents } from '../actions'
 
+function shortenText(text, maxLength = 5) {
+    if (text && text.length > maxLength) {
+        return `${text.substring(0, maxLength)} ...`
+    }
+
+    return text
+}
+
 class Blogs extends Component {
     static async getInitialProps() {
         let blogs = []
@@ -28,7 +36,7 @@ class Blogs extends Component {
                     {blog.Title}
                     </h2>
                     <h3 className="post-subtitle">
-                    {blog.SubTitle}
+                    {shortenText(blog.SubTitle)}
                     </h3>
                 </a>
                 </Link>
@@ -51,8 +59,8 @@ class Blogs extends Component {
                     <div className="row">
                         <div className="col-lg-8 col-md-10 mx-auto">
                         <div className="site-heading">
-                            <h1>Fresh Blogs</h1>
-                            <span className="subheading">Programming, travelling...</span>
+                            <h1>Blogs Dashboard</h1>
+                            <span className="subheading">Let's Write SOme Nice Blog Today</span>
                         </div>
                         </div>
                     </div>

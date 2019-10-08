@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../components/shared/Header'
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/BasePage'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Button } from 'reactstrap'
 
 import { getContentByUser } from '../actions/index'
 import { Link } from '../routes'
@@ -74,6 +74,9 @@ class UserBlogs extends Component {
                     </Container>
                 </div>
                 <BasePage className="blog-user-page">
+                    <Link route="/blogs/new">
+                        <Button>Create New Blog</Button>
+                    </Link>
                     <Row>
                         <Col md="6" className="mx-auto text-center">
                             <h2 className="blog-status-title">Published Blogs</h2>
