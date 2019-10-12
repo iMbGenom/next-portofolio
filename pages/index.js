@@ -118,18 +118,30 @@ class Index extends SUperComponent {
                         <Col md="6">
                         <div className="hero-section">
                             <div className={`flipper ${(isFlipping) ? 'isFlipping' : ''}`}>
-                            <div className="back">
-                                <div className="hero-section-content">
-                                <h2> Full Stack Web Developer </h2>
-                                <div className="hero-section-content-intro">
-                                    Have a look at my portfolio and job history.
+                                <div className="front">
+                                    <div className="hero-section-content">
+                                    <h2> Full Stack Web Developer </h2>
+                                    <div className="hero-section-content-intro">
+                                        Have a look at my portfolio and job history.
+                                    </div>
+                                    </div>
+                                    <img className="image" src="/static/images/section-1.png"/>
+                                    <div className="shadow-custom">
+                                    <div className="shadow-inner"> </div>
+                                    </div>
                                 </div>
+                                <div className="back">
+                                    <div className="hero-section-content">
+                                    <h2> Get Your project Done </h2>
+                                    <div className="hero-section-content-intro">
+                                        Professional and top quality services in web development
+                                    </div>
+                                    </div>
+                                    <img className="image" src="/static/images/section-2.png"/>
+                                    <div className="shadow-custom">
+                                    <div className="shadow-inner"> </div>
+                                    </div>
                                 </div>
-                                <img className="image" src="/static/images/section-1.png"/>
-                                <div className="shadow-custom">
-                                <div className="shadow-inner"> </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
                         </Col>
