@@ -94,7 +94,7 @@ class Index extends SUperComponent {
     animateCard() {
         this.cardAnimationInterval = setInterval(() => {
             this.setState({ isFlipping: !this.state.isFlipping })
-        }, 3000)
+        }, 5000)
     }
 
     render() {
@@ -107,7 +107,7 @@ class Index extends SUperComponent {
         console.log(articles)
 
         return (
-            <BaseLayout className="cover" headerType="index">
+            <BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} headerType="index">
                 <div className="main-section">
                     <div className="background-image">
                     <img src="/static/images/background-index.png" />
@@ -138,8 +138,8 @@ class Index extends SUperComponent {
                                     </div>
                                     </div>
                                     <img className="image" src="/static/images/section-2.png"/>
-                                    <div className="shadow-custom">
-                                    <div className="shadow-inner"> </div>
+                                    <div className="shadow-custom shadow-custom-2">
+                                        <div className="shadow-inner"> </div>
                                     </div>
                                 </div>
                             </div>
