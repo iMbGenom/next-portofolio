@@ -41,7 +41,8 @@ class Index extends SUperComponent {
         // debugger // dpt mengambil smua nya di SuperComponent yang setelah super
 
         this.state = {
-            title: 'I am index page'
+            title: 'I am index page',
+            isFlipping: false
         }
         console.log('constructor') // 2nd output in client and server
         // this.updateTitle = this.updateTitle.bind(this) // callback and arrow function 2nd options
@@ -50,6 +51,7 @@ class Index extends SUperComponent {
     }
 
     componentDidMount() {
+        this.animateCard()
         console.log('componentDidMount')
         human.talk() // call function
         Human.walk() // call static function
@@ -61,6 +63,7 @@ class Index extends SUperComponent {
 
     componentWillUnmount() {
         console.log('componentWillUnmount')
+        this.cardAnimationInterval && clearInterval(this.cardAnimationInterval)
     }
 
     // callback and arrow function 1st options
@@ -88,10 +91,16 @@ class Index extends SUperComponent {
         })
     }
 
+    animateCard() {
+        this.cardAnimationInterval = setInterval(() => {
+            this.setState({ isFlipping: !this.state.isFlipping })
+        }, 3000)
+    }
+
     render() {
         // console.log('render')
         // debugger
-        const { title } = this.state // destructurizing
+        const { title, isFlipping } = this.state // destructurizing
         // const title = this.state.title // same like above
         // const initialData = this.props.initialData
         const { initialData, articles } = this.props
@@ -108,7 +117,7 @@ class Index extends SUperComponent {
                     <Row>
                         <Col md="6">
                         <div className="hero-section">
-                            <div className={`flipper`}>
+                            <div className={`flipper ${(isFlipping) ? 'isFlipping' : ''}`}>
                             <div className="back">
                                 <div className="hero-section-content">
                                 <h2> Full Stack Web Developer </h2>
