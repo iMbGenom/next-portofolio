@@ -15,7 +15,7 @@ const BaseLayout = (props) => {
             <div className="layout-container">
                 {/* { headerType === 'index' && <Header className="port-nav-index" />} */}
                 {/* { headerType === 'default' && <Header className="port-nav-default" />} */}
-                <Header className={`port-nav-${headerType}`} />
+                <Header className={`port-nav-${headerType}`} isSiteOwner="admin"/>
                 <main className={`cover ${className}`}>
                     <div className="wrapper">
                     {children}
