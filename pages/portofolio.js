@@ -27,7 +27,7 @@ class Portofolio extends Component {
         const { portofolio } = this.props
 
         return (
-            <BaseLayout>
+            <BaseLayout title="Portofolio">
                 <BasePage>
                     <h1>I am Portofolio Page with param:</h1>
                     {/* <h2>{this.props.router.query.id}</h2> */}

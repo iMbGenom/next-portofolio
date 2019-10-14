@@ -107,7 +107,11 @@ class Index extends SUperComponent {
         console.log(articles)
 
         return (
-            <BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} headerType="index">
+            <BaseLayout
+                className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`}
+                headerType="index"
+                title="Home"
+            >
                 <div className="main-section">
                     <div className="background-image">
                     <img src="/static/images/background-index.png" />

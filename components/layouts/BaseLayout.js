@@ -3,13 +3,13 @@ import Header from '../shared/Header'
 import Head from 'next/head'
 
 const BaseLayout = (props) => {
-    const { className, children } = props
+    const { className, children, title } = props
     const headerType = props.headerType || 'default'
 
     return (
         <Fragment>
             <Head>
-                <title>Ulasan Gue</title>
+                <title>Ulasan Gue - {title}</title>
                 <script src="https://kit.fontawesome.com/380d351f8f.js"></script>
             </Head>
             <div className="layout-container">

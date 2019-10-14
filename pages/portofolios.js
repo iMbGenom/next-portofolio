@@ -97,7 +97,7 @@ class Portofolios extends Component {
     render() {
         const { contents } = this.props
         return (
-            <BaseLayout>
+            <BaseLayout title="Portofolios">
                 <BasePage className="portfolio-page" title="Portofolios">
                     <Button
                         onClick={() => Router.pushRoute('/portofolioNew')}
