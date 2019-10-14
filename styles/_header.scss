@@ -36,7 +36,23 @@
         }
       }
     }
+
+    .port-dropdown-menu {
+  
+      .port-dropdown-item {
+        color: black;
+        &.active {
+          color: #dba919;
+        }
+      }
+
+      .port-dropdown-toogle {
+        color: white;
+      }
+    }
+  
   }
+
   
   .port-navbar.port-nav-base.port-nav-default {
     padding: 30px;

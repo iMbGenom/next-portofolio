@@ -64,9 +64,11 @@ import ActiveLink from '../ActiveLink'
 
 const BsNavLink = (props) => {
   const { route, title } = props
+  const className = props.className || ""
+
   return (
     <ActiveLink activeClassName="active" route={route}>
-      <a className="nav-link port-navbar-link"> {title} </a>
+      <a className={`nav-link port-navbar-link ${className}`}> {title} </a>
     </ActiveLink>
     // <Link href={route}>
     //   <a className="nav-link port-navbar-link"> {title} </a>
@@ -120,17 +122,17 @@ export default class Example extends React.Component {
 
     if (isSiteOwner) {
       return (
-        <Dropdown className="port-navbar-link" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-          <DropdownToggle nav caret>
+        <Dropdown className="port-navbar-link port-dropdown-menu" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+          <DropdownToggle className="port-dropdown-toogle" nav caret>
             Blogs
           </DropdownToggle>
           <DropdownMenu>
             {/* <DropdownItem header>Header</DropdownItem> */}
-            <DropdownItem><BsNavLink route="/blogs" title="List" /></DropdownItem>
+            <DropdownItem><BsNavLink className="port-dropdown-item" route="/blogs" title="List" /></DropdownItem>
             {/* <DropdownItem disabled>Action (disabled)</DropdownItem> */}
             {/* <DropdownItem divider /> */}
-            <DropdownItem><BsNavLink route="/blogs/new" title="Create" /></DropdownItem>
-            <DropdownItem><BsNavLink route="/blogs/dashboard" title="Dashboard" /></DropdownItem>
+            <DropdownItem><BsNavLink className="port-dropdown-item" route="/blogs/new" title="Create" /></DropdownItem>
+            <DropdownItem><BsNavLink className="port-dropdown-item" route="/blogs/dashboard" title="Dashboard" /></DropdownItem>
           </DropdownMenu>
         </Dropdown>
       )
