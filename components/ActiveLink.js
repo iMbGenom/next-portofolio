@@ -7,7 +7,11 @@ const ActiveLink = ({children, router, ...props}) => {
   let className = child.props.className || ''
 
   if (router.asPath === props.route && props.activeClassName) {
+    // console.log('asPath', router.asPath)
+    // console.log('props.route', props.route)
+    // console.log('props.activeClassName', props.activeClassName)
     className = `${className} ${props.activeClassName}`
+    // console.log(className)
   }
 
   delete props.activeClassName
