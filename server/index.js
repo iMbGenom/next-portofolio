@@ -3,6 +3,7 @@ const next = require('next')
 const routes = require('../routes')
 const favicon = require('serve-favicon')
 const path = require('path')
+const compression = require('compression')
 
 const port = parseInt(process.env.PORT, 10) || 4000
 const dev = process.env.NODE_ENV !== 'production'
@@ -17,6 +18,7 @@ const robotsOptions = {
 
 app.prepare().then(() => {
     const server = express()
+    server.use(compression())
     server.use(favicon(path.join(__dirname, '../static/images', 'favicon.ico')))
 
     server.get('/robots.txt', (req, res) => {
